@@ -18,7 +18,6 @@
 @implementation ViewController
 
 // amount of pixels to be considered out of the view (hopefully this is enough...)
-const float yScrollLimit= 70.0;
 const float firstInfoSubViewYOrigin = 400.0;
 
 /*TODO: Add the decoder and coder methods for:
@@ -62,11 +61,25 @@ firstInfoViewMoveOffAmount;
 
 - (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer
 {
+    [self animateInfoViewsInSuperView:self.view forPanGesture:gestureRecognizer];
+}
+
+-(void) animateInfoViewsInSuperView:(UIView*)aSuperView forPanGesture:(UIPanGestureRecognizer*)gestureRecognizer
+{
     //Information common to all OPInfoViews
-    CGPoint translation = [gestureRecognizer translationInView:self.view];
+    CGPoint translation = [gestureRecognizer translationInView:aSuperView];
+    
+    //Limit the size of the translation
+    if(translation.y > 700.0) translation.y = 700.0;
+    else if (translation.y < -700.0) translation.y = -700.0;
+    else {
+        //do nothing
+    }
+    
+    NSLog(@"translation size %f",translation.y);
     
     // Get the subviews of the view
-    NSArray *allSubViews = [self.view subviews];
+    NSArray *allSubViews = [aSuperView subviews];
     
     // Array of the OPInfoView subviews
     NSMutableDictionary *yPosMoveForEachOPInfoView = [[NSMutableDictionary alloc] initWithCapacity:10];
@@ -77,16 +90,16 @@ firstInfoViewMoveOffAmount;
     //Given an integer label to each subview
     int iOPInfoView = 0;
     
-    for (UIView *subview in allSubViews) {
+    for (OPInfoView *subview in allSubViews) {
         
         //Check to see if this is an OPInfoView class
         if ([subview isKindOfClass:[OPInfoView class]]){
-            
+    
             //work out how much to translate each subview
             CGRect updateFrame = subview.frame;
-            CGFloat yPositionToMove = subview.frame.origin.y + 0.5*translation.y ;
-            //if the scroll is above a certain level then stop the movement
-            //if(yPositionToMove < yScrollLimit) yPositionToMove = yScrollLimit;
+            CGFloat yPositionToMove = subview.frame.origin.y + translation.y ;
+            
+            
             updateFrame.origin.y = yPositionToMove;
             
             //recast as a NSNumber
@@ -104,8 +117,7 @@ firstInfoViewMoveOffAmount;
     }
     
     //loop through all the subViews and animate all OPInfoSubviews
-    
-    [UIView animateWithDuration:0.3
+    [UIView animateWithDuration:0.5
                           delay:0.0
                         options:UIViewAnimationOptionCurveLinear
                      animations:^{
@@ -127,70 +139,11 @@ firstInfoViewMoveOffAmount;
                              }
                          }
                          
-                         //[gestureRecognizer setTranslation:CGPointZero inView:self.view];
                      }
                      completion:^(BOOL finished){
                          //do nothing
-    }];
+                     }];
     
-    
-}
-
-- (void) infoSubViewSwipeRight{
-    
-    if(self.isFirstInfoViewInScreen){
-        [self setOriginalFirstInfoViewXPosition:self.firstInfoSubView.frame.origin.x];
-        [self animateSubView:self.firstInfoSubView toXCoord:firstInfoViewMoveOffAmount toYCoord:self.firstInfoSubView.frame.origin.y];
-        [self setIsFirstInfoViewInScreen:NO];
-    }
-    else{
-        float amountToMoveBack = originalFirstInfoViewXPosition;
-        [self animateSubView:self.firstInfoSubView toXCoord:amountToMoveBack toYCoord:self.firstInfoSubView.frame.origin.y];
-        [self setIsFirstInfoViewInScreen:YES];
-    }
-    
-}
-
-- (IBAction)toggleFirstInfoSubView:(id)sender {
-    
-    if(self.isFirstInfoViewInScreen){
-        [self setOriginalFirstInfoViewXPosition:self.firstInfoSubView.frame.origin.x];  
-        [self animateSubView:self.firstInfoSubView toXCoord:firstInfoViewMoveOffAmount toYCoord:self.firstInfoSubView.frame.origin.y];
-        [self setIsFirstInfoViewInScreen:NO];
-    }
-    else{
-        float amountToMoveBack = originalFirstInfoViewXPosition;
-        [self animateSubView:self.firstInfoSubView toXCoord:amountToMoveBack toYCoord:self.firstInfoSubView.frame.origin.y];
-        [self setIsFirstInfoViewInScreen:YES];
-    }
-    //move the sub view back again
-    
-    ///KEEP FOR REFERENCE
-    ///Helpful for transitioning to a different view after confirmation
-    /*UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    @try {
-        UIViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:@"SecondViewController"];
-        secondViewController.modalPresentationStyle = UIModalPresentationCustom;
-        secondViewController.transitioningDelegate = self;
-        [self presentViewController:secondViewController animated:YES completion:nil];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);
-    }*/
-}
-
--(void) animateSubView:(UIView*)viewToMove toXCoord:(float)xCoord toYCoord:(float)yCoord
-{
-    [UIView animateWithDuration:0.5
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         //animate to move to a given location
-                         viewToMove.frame = CGRectMake(xCoord, yCoord, viewToMove.frame.size.width, viewToMove.frame.size.height);
-                     }
-                    completion:^(BOOL finished){
-                        //do nothing
-                    }];
 }
 
 #pragma mark - Transition Delegate Required Method
@@ -203,5 +156,18 @@ firstInfoViewMoveOffAmount;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+///KEEP FOR REFERENCE
+///Helpful for transitioning to a different view after confirmation
+/*UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+ @try {
+ UIViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:@"SecondViewController"];
+ secondViewController.modalPresentationStyle = UIModalPresentationCustom;
+ secondViewController.transitioningDelegate = self;
+ [self presentViewController:secondViewController animated:YES completion:nil];
+ }
+ @catch (NSException *exception) {
+ NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);
+ }*/
 
 @end

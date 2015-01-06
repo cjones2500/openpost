@@ -10,12 +10,12 @@
 
 @implementation OPInfoView
 
-const float yTopScrollLimit= 70.0;
-
 @synthesize OPInfoViewHeight,
 OPInfoViewWidth,
 OPInfoViewGesture,
-OPSuperView;
+OPSuperView,
+OPInfoViewYMax,
+OPInfoViewYMin;
 
 - (id)initWithYCoord:(CGFloat)yCoord withSuperView:(UIView*)aSuperView withAnImageNamed:(NSString*)anImage
 {
@@ -70,56 +70,11 @@ OPSuperView;
 
 -(void) initOPInfoViewWithImage:(NSString*)anImage
 {
-    //set the image
+    //setup the image
     UIImage * anImageObj;
     anImageObj = [UIImage imageNamed:anImage];
     [self setImage:anImageObj];
-    
-    //create a gesture recognizer
-    /*UIPanGestureRecognizer *scrollInfoViewRecognizer = [[UIPanGestureRecognizer alloc]
-                                                        initWithTarget:self action:@selector(handlePanGesture:)];
-    [self.OPSuperView addGestureRecognizer:scrollInfoViewRecognizer];*/
 }
 
-- (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer
-{
-    CGPoint translation = [gestureRecognizer translationInView:self];
-    CGRect currentFrame = self.frame;
-    CGFloat yPositionToMove = self.frame.origin.y + 2.0*translation.y ;
-    
-    //if the scroll is above a certain level then stop the movement
-    if(yPositionToMove < yTopScrollLimit) yPositionToMove = yTopScrollLimit;
-    
-    
-    //limit how far in the xDirectionToMove to be less than 4x view frame
-    /*if( xDirectionToMove > 4.0*self.view.frame.origin.x){
-     xDirectionToMove = 4.0*self.view.frame.origin.x;
-     }
-     else if (xDirectionToMove < -4.0*self.view.frame.origin.x){
-     xDirectionToMove = -4.0*self.view.frame.origin.x;
-     }
-     else{
-     //do nothing
-     }*/
-    
-    currentFrame.origin.y = yPositionToMove;
-    
-    /*self.firstInfoSubView.frame = currentFrame;
-     [gestureRecognizer setTranslation:CGPointZero inView:self.view];*/
-    
-    [UIView animateWithDuration:0.3
-                          delay:0.0
-                        options:UIViewAnimationOptionCurveLinear
-                     animations:^{
-                         //animate to move to a given location
-                         self.frame = currentFrame;
-                         [gestureRecognizer setTranslation:CGPointZero inView:self];
-                     }
-                     completion:^(BOOL finished){
-                         //do nothing
-                     }];
-    
-    
-}
 
 @end

@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barca.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rBb-LE-FRN">
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="barca2.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="rBb-LE-FRN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rBb-LE-FRN" secondAttribute="height" multiplier="1:1" id="hg0-94-CXL"/>
@@ -71,5 +71,6 @@
     </scenes>
     <resources>
         <image name="barca.jpg" width="3227" height="1333"/>
+        <image name="barca2.jpg" width="2476" height="724"/>
     </resources>
 </document>
