@@ -19,14 +19,9 @@
 
 @implementation ViewController
 
-/*TODO: Add the decoder and coder methods for:
-- originalFirstInfoViewXPosition
-- firstInfoSubView
- */
+/*TODO: Coder and Decoder initialisations of all Objects in the view*/
 
-/*TODO: Different subViewOffScreen amounts for different types of machine*/
-
-//TODO: Add a different maximum and minumum to each OPInfoView
+/*TODO: Currently hardcorded the yPosition of the first OPInfoView, this makes it difficult ot use on different platforms */
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,13 +29,16 @@
     //add Background view
     [self.view sendSubviewToBack:self.mainBkgView];
     
+    //set the maximum size of the view for 3 subviews
+    float maxmimumScollLength = 3.0*self.view.frame.size.height;
+    
     //initialise the customScrollView
     self.customScrollView = [[CustomScrollView alloc] initWithFrame:self.view.bounds];
-    self.customScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 2000.0);
+    self.customScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, maxmimumScollLength);
     self.customScrollView.scrollHorizontal = NO;
     
     //y positions of all the different views
-    float firstOPInfoViewYPos = 150.0;
+    float firstOPInfoViewYPos = 0.5*self.view.frame.size.height - 120.0; //NOTE:hardcorded the center of the first view
     float secondOPInfoViewYPos = firstOPInfoViewYPos + self.customScrollView.frame.size.height;
     float thirdOPInfoViewYPos = secondOPInfoViewYPos + self.customScrollView.frame.size.height;
     
