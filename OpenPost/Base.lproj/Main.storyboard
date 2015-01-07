@@ -32,6 +32,9 @@
                             <constraint firstAttribute="centerX" secondItem="rBb-LE-FRN" secondAttribute="centerX" id="xPN-c7-Phi"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mainBkgView" destination="rBb-LE-FRN" id="qja-if-d9G"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

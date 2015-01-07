@@ -5,13 +5,15 @@
 //  Created by Christopher Jones on 01/01/2015.
 //  Copyright (c) 2015 Christopher Jones. All rights reserved.
 //
-
+#import "CustomScrollView.h"
 #import "ViewController.h"
 #import "OPTransition.h"
 #import <math.h>
 #import "OPInfoView.h"
 
 @interface ViewController () <UIViewControllerTransitioningDelegate>
+
+@property (nonatomic) CustomScrollView *customScrollView;
 
 @end
 
@@ -36,7 +38,36 @@ firstInfoViewMoveOffAmount;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setFirstInfoViewMoveOffAmount:self.view.frame.size.width + self.firstInfoSubView.frame.size.width + 1.0];
+    
+    [self.view sendSubviewToBack:self.mainBkgView];
+    
+    self.customScrollView = [[CustomScrollView alloc] initWithFrame:self.view.bounds];
+    self.customScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 1000);
+    self.customScrollView.scrollHorizontal = NO;
+    
+    UIImageView *redView = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/4.0, 50.0, 190.0, 190.0)];
+    UIImageView *redView2 = [[UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/4.0, 660.0, 190.0, 190.0)];
+
+    //setup the image
+    UIImage * anImageObj;
+    anImageObj = [UIImage imageNamed:@"barca.jpg"];
+    [redView setImage:anImageObj];
+    [redView2 setImage:anImageObj];
+    
+    
+    //[self.customScrollView addSubview:redView];
+    [self.customScrollView addSubview:redView2];
+    [self.view addSubview:redView];
+    
+    [self.view addSubview:self.customScrollView];
+    //make sure bring to front is called after the fact
+    [self.view bringSubviewToFront:redView];
+    
+    /*OPInfoView * firstOPInfoView = [[OPInfoView alloc] initWithYCoord:100.0 withSuperView:self.view withAnImageNamed:@"barca.jpg"];
+    [self.view addSubview:firstOPInfoView];
+    [self.view addSubview:self.customScrollView];*/
+    
+    /*[self setFirstInfoViewMoveOffAmount:self.view.frame.size.width + self.firstInfoSubView.frame.size.width + 1.0];
     [self setIsFirstInfoViewInScreen:YES];
     
     //set the frame of the first subRubInfoView
@@ -55,14 +86,14 @@ firstInfoViewMoveOffAmount;
     
     UIPanGestureRecognizer *scrollInfoViewRecognizer = [[UIPanGestureRecognizer alloc]
                                                         initWithTarget:self action:@selector(handlePanGesture:)];
-    [self.view addGestureRecognizer:scrollInfoViewRecognizer];
+    [self.view addGestureRecognizer:scrollInfoViewRecognizer];*/
     
 }
 
-- (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer
+/*- (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer
 {
     [self animateInfoViewsInSuperView:self.view forPanGesture:gestureRecognizer];
-}
+}*/
 
 -(void) animateInfoViewsInSuperView:(UIView*)aSuperView forPanGesture:(UIPanGestureRecognizer*)gestureRecognizer
 {

@@ -7,7 +7,6 @@
 //
 
 #import "OPInfoView.h"
-#import <POP.h> 
 
 @implementation OPInfoView
 
