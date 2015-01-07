@@ -55,7 +55,7 @@ OPButtonViewWidth;
     }
 }
 
--(void) AddTargetToLoginButton:(NSString*)aTitle
+-(void) addTargetToButtonWithTitle:(NSString*)aTitle
 {
     for (OPButton* aOPButton in self.subviews){
         if([aOPButton isKindOfClass:[OPButton class]]){
