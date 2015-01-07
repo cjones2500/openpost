@@ -14,11 +14,17 @@
 @property (nonatomic,assign) float OPTextInfoViewWidth;
 @property (nonatomic,assign) float OPTextInfoViewHeight;
 @property (nonatomic,assign) float amountBelowParentInfoView;
+@property (nonatomic,assign) float textFontSize;
+@property (weak,nonatomic) NSString* textFontType;
+
 @property (weak,nonatomic) UIView* OPTextInfoSuperView;
 @property (weak,nonatomic) OPInfoView* parentInfoView;
 
-- (id)initWithSuperView:(UIView*)aSuperView withText:(NSString*)textToInsert linkedToInfoView:(OPInfoView*)anInfoView;
+- (id)initOPTextViewWithSuperView:(UIView*)aSuperView withText:(NSString*)textToInsert linkedToInfoView:(OPInfoView*)anInfoView withTextFontSize:(float)aTextFontSize withFontType:(NSString*)aFontType;
+
+- (id)initOPTextSubViewWithSuperView:(UIView*)aSuperView withText:(NSString*)textToInsert linkedToTextInfoView:(OPTextInfoView*)anInfoView withTextFontSize:(float)aTextFontSize withFontType:(NSString*)aFontType;
+
 - (void)initTextInfoView;
--(void) formatTextInView;
+- (void)formatTextInView;
 
 @end

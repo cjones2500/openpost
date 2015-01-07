@@ -77,6 +77,9 @@ OPInfoViewYMin;
     
     self.layer.cornerRadius = self.frame.size.width/2.0;
     self.layer.masksToBounds = YES;
+    self.layer.borderColor = [UIColor blackColor].CGColor;
+    self.layer.borderWidth = 1.5f;
+    
 }
 
 

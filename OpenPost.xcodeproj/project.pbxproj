@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EB0DB98DD01304EA2D1601FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5214D595456C16793A7FB3F /* libPods.a */; };
+		F90C569B1A5D7A8C0086B71A /* mapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = F90C569A1A5D7A8C0086B71A /* mapshot.png */; };
 		F95EADD01A5CB2F800A2F1C8 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */; };
 		F97170981A55EC6B0023AED9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170971A55EC6B0023AED9 /* main.m */; };
 		F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F971709A1A55EC6B0023AED9 /* AppDelegate.m */; };
@@ -40,6 +41,7 @@
 		4DA0D40E022F2BFB3CE232A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		E11D9D1E56910D8A828E445D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F5214D595456C16793A7FB3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		F90C569A1A5D7A8C0086B71A /* mapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapshot.png; sourceTree = SOURCE_ROOT; };
 		F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomScrollView.h; path = ../CustomScrollView.h; sourceTree = "<group>"; };
 		F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomScrollView.m; path = ../CustomScrollView.m; sourceTree = "<group>"; };
 		F97170921A55EC6B0023AED9 /* OpenPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +139,7 @@
 				F97170A01A55EC6B0023AED9 /* ViewController.m */,
 				F9EEB48B1A5C29BA00432F6D /* barca2.jpg */,
 				F97170C61A5774540023AED9 /* barca.jpg */,
+				F90C569A1A5D7A8C0086B71A /* mapshot.png */,
 				F97170A21A55EC6B0023AED9 /* Main.storyboard */,
 				F97170A51A55EC6B0023AED9 /* Images.xcassets */,
 				F97170A71A55EC6B0023AED9 /* LaunchScreen.xib */,
@@ -264,6 +267,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F90C569B1A5D7A8C0086B71A /* mapshot.png in Resources */,
 				F97170A41A55EC6B0023AED9 /* Main.storyboard in Resources */,
 				F97170C71A5774540023AED9 /* barca.jpg in Resources */,
 				F97170A91A55EC6B0023AED9 /* LaunchScreen.xib in Resources */,

@@ -26,11 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //total number of subview in this ViewController
+    float totalNumberOfSubViews = 3.0;
+    
     //add Background view
     [self.view sendSubviewToBack:self.mainBkgView];
     
     //set the maximum size of the view for 3 subviews
-    float maxmimumScollLength = 3.0*self.view.frame.size.height;
+    float maxmimumScollLength = totalNumberOfSubViews*self.view.frame.size.height;
     
     //initialise the customScrollView
     self.customScrollView = [[CustomScrollView alloc] initWithFrame:self.view.bounds];
@@ -43,24 +46,34 @@
     float thirdOPInfoViewYPos = secondOPInfoViewYPos + self.customScrollView.frame.size.height;
     
     //create all InfoViews
-    OPInfoView * firstOPInfoView = [[OPInfoView alloc] initWithYCoord:firstOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
+    OPInfoView * firstOPInfoView = [[OPInfoView alloc] initWithYCoord:firstOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"mapshot.png"];
      [self.customScrollView addSubview:firstOPInfoView];
 
-    OPInfoView * secondOPInfoView = [[OPInfoView alloc] initWithYCoord:secondOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
+    OPInfoView * secondOPInfoView = [[OPInfoView alloc] initWithYCoord:secondOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"mapshot.png"];
     [self.customScrollView addSubview:secondOPInfoView];
     
     OPInfoView * thirdOPInfoView = [[OPInfoView alloc] initWithYCoord:thirdOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
     [self.customScrollView addSubview:thirdOPInfoView];
     
     //Create all primary Text Views
-    OPTextInfoView * firstTextInfoView = [[OPTextInfoView alloc] initWithSuperView:self.customScrollView withText:@"SEND PACKAGES ANYWHERE, ANYTIME" linkedToInfoView:firstOPInfoView];
+    OPTextInfoView * firstTextInfoView = [[OPTextInfoView alloc] initOPTextViewWithSuperView:self.customScrollView withText:@"SEND PACKAGES ANYWHERE, ANYTIME" linkedToInfoView:firstOPInfoView withTextFontSize:17.0 withFontType:@"HelveticaNeue-Thin"];
     [self.customScrollView addSubview:firstTextInfoView];
     
-    OPTextInfoView * secondTextInfoView = [[OPTextInfoView alloc] initWithSuperView:self.customScrollView withText:@"PAY ON DELIVERY" linkedToInfoView:secondOPInfoView];
+    OPTextInfoView * secondTextInfoView = [[OPTextInfoView alloc] initOPTextViewWithSuperView:self.customScrollView withText:@"TRACK AND PAY" linkedToInfoView:secondOPInfoView withTextFontSize:17.0 withFontType:@"HelveticaNeue-Thin"];
     [self.customScrollView addSubview:secondTextInfoView];
     
-    OPTextInfoView * thirdTextInfoView = [[OPTextInfoView alloc] initWithSuperView:self.customScrollView withText:@"REVIEW YOUR COURIER" linkedToInfoView:thirdOPInfoView];
+    OPTextInfoView * thirdTextInfoView = [[OPTextInfoView alloc] initOPTextViewWithSuperView:self.customScrollView withText:@"REVIEW YOUR COURIER" linkedToInfoView:thirdOPInfoView withTextFontSize:17.0 withFontType:@"HelveticaNeue-Thin"];
     [self.customScrollView addSubview:thirdTextInfoView];
+    
+    //Create all secondary Text Views
+    OPTextInfoView * firstSubTextInfoView = [[OPTextInfoView alloc] initOPTextSubViewWithSuperView:self.customScrollView withText:@"OpenPost picks up and sends packages from any location" linkedToTextInfoView:firstTextInfoView withTextFontSize:16.0 withFontType:@"HelveticaNeue-Thin"];
+    [self.customScrollView addSubview:firstSubTextInfoView];
+    
+    OPTextInfoView * secondSubTextInfoView = [[OPTextInfoView alloc] initOPTextSubViewWithSuperView:self.customScrollView withText:@"Track your package all the way. Pay on Delivery" linkedToTextInfoView:secondTextInfoView withTextFontSize:16.0 withFontType:@"HelveticaNeue-Thin"];
+    [self.customScrollView addSubview:secondSubTextInfoView];
+    
+    OPTextInfoView * thirdSubTextInfoView = [[OPTextInfoView alloc] initOPTextSubViewWithSuperView:self.customScrollView withText:@"Rate your courier and improve the Open Post experience" linkedToTextInfoView:thirdTextInfoView withTextFontSize:16.0 withFontType:@"HelveticaNeue-Thin"];
+    [self.customScrollView addSubview:thirdSubTextInfoView];
     
     [self.view addSubview:self.customScrollView];
 }
