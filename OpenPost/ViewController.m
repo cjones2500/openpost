@@ -8,8 +8,8 @@
 #import "CustomScrollView.h"
 #import "ViewController.h"
 #import "OPTransition.h"
-#import <math.h>
 #import "OPInfoView.h"
+#import "OPTextInfoView.h"
 
 @interface ViewController () <UIViewControllerTransitioningDelegate>
 
@@ -53,6 +53,16 @@
     
     OPInfoView * thirdOPInfoView = [[OPInfoView alloc] initWithYCoord:thirdOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
     [self.customScrollView addSubview:thirdOPInfoView];
+    
+    //Create all primary Text Views
+    OPTextInfoView * firstTextInfoView = [[OPTextInfoView alloc] initWithSuperView:self.customScrollView withText:@"SEND PACKAGES ANYWHERE, ANYTIME" linkedToInfoView:firstOPInfoView];
+    [self.customScrollView addSubview:firstTextInfoView];
+    
+    OPTextInfoView * secondTextInfoView = [[OPTextInfoView alloc] initWithSuperView:self.customScrollView withText:@"PAY ON DELIVERY" linkedToInfoView:secondOPInfoView];
+    [self.customScrollView addSubview:secondTextInfoView];
+    
+    OPTextInfoView * thirdTextInfoView = [[OPTextInfoView alloc] initWithSuperView:self.customScrollView withText:@"REVIEW YOUR COURIER" linkedToInfoView:thirdOPInfoView];
+    [self.customScrollView addSubview:thirdTextInfoView];
     
     [self.view addSubview:self.customScrollView];
 }

@@ -21,6 +21,7 @@
 		F97170C31A5620D60023AED9 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170C21A5620D60023AED9 /* SecondViewController.m */; };
 		F97170C71A5774540023AED9 /* barca.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F97170C61A5774540023AED9 /* barca.jpg */; };
 		F97170CA1A58439C0023AED9 /* OPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170C91A58439C0023AED9 /* OPScrollView.m */; };
+		F9C8984F1A5D4C86001E71BB /* OPTextInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */; };
 		F9EEB4881A59665000432F6D /* OPInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EEB4871A59665000432F6D /* OPInfoView.m */; };
 		F9EEB48C1A5C29BA00432F6D /* barca2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9EEB48B1A5C29BA00432F6D /* barca2.jpg */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,8 @@
 		F97170C61A5774540023AED9 /* barca.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barca.jpg; sourceTree = "<group>"; };
 		F97170C81A58439C0023AED9 /* OPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPScrollView.h; sourceTree = "<group>"; };
 		F97170C91A58439C0023AED9 /* OPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPScrollView.m; sourceTree = "<group>"; };
+		F9C8984D1A5D4C86001E71BB /* OPTextInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPTextInfoView.h; path = ../OPTextInfoView.h; sourceTree = "<group>"; };
+		F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPTextInfoView.m; path = ../OPTextInfoView.m; sourceTree = "<group>"; };
 		F9EEB4861A59665000432F6D /* OPInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPInfoView.h; sourceTree = "<group>"; };
 		F9EEB4871A59665000432F6D /* OPInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPInfoView.m; sourceTree = "<group>"; };
 		F9EEB48B1A5C29BA00432F6D /* barca2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barca2.jpg; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 				F9EEB4871A59665000432F6D /* OPInfoView.m */,
 				F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */,
 				F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */,
+				F9C8984D1A5D4C86001E71BB /* OPTextInfoView.h */,
+				F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */,
 			);
 			path = OpenPost;
 			sourceTree = "<group>";
@@ -314,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9C8984F1A5D4C86001E71BB /* OPTextInfoView.m in Sources */,
 				F97170C31A5620D60023AED9 /* SecondViewController.m in Sources */,
 				F97170CA1A58439C0023AED9 /* OPScrollView.m in Sources */,
 				F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */,

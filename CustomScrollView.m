@@ -102,8 +102,9 @@
             if (!self.scrollVertical) {
                 velocity.y = 0.0;
             }
-            velocity.x = -velocity.x;
-            velocity.y = -velocity.y;
+            
+            velocity.x = -0.5*velocity.x;
+            velocity.y = -0.5*velocity.y;
             //NSLog(@"decelerating with velocity: %@", NSStringFromCGPoint(velocity));
             POPDecayAnimation *decayAnimation = [POPDecayAnimation animation];
             decayAnimation.property = [self boundsOriginProperty];
