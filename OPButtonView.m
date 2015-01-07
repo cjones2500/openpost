@@ -40,8 +40,7 @@ OPButtonViewWidth;
     self.layer.masksToBounds = YES;
 }
 
--(void) placeButtonInViewWithXPos:(float)anXPos withPercentageWidth:(float)aPercentageWidth withTitle:(NSString*)aTitle
-{
+-(void) placeButtonInViewWithXPos:(float)anXPos withPercentageWidth:(float)aPercentageWidth withTitle:(NSString*)aTitle{
     @try {
         float widthOfButtonInView = self.frame.size.width*aPercentageWidth/100.0;
         
@@ -54,7 +53,20 @@ OPButtonViewWidth;
     @catch (NSException *exception) {
         NSLog(@"Error adding UIButton to view %@",exception);
     }
+}
 
+-(void) AddTargetToLoginButton:(NSString*)aTitle
+{
+    for (OPButton* aOPButton in self.subviews){
+        if([aOPButton isKindOfClass:[OPButton class]]){
+            [aOPButton addTarget:self action:@selector(onClick) forControlEvents:UIControlEventTouchUpInside];
+        }
+    }
+}
+
+-(void) onClick
+{
+    NSLog(@"hello");
 }
 
 -(void) placeHorizontalLineInViewWithXCoord:(CGFloat)xCoord

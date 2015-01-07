@@ -12,5 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *mainBkgView;
 
+- (void) onClickLogin;
+
 @end
 

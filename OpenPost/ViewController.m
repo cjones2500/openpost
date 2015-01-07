@@ -41,6 +41,10 @@
     //add a Login Button into the Control Button View
     [controlButtonsView placeButtonInViewWithXPos:0.0 withPercentageWidth:50.0 withTitle:@"Login"];
     [self.view addSubview:controlButtonsView];
+    [controlButtonsView addTargetToButtonWithTitle:@"Login"];
+    
+    //add actions to the differentButtons
+    
     
     //add a SignUp Button into the Control Button View
     [controlButtonsView placeButtonInViewWithXPos:0.5*controlButtonsView.frame.size.width withPercentageWidth:50.0 withTitle:@"Sign Up"];
@@ -96,6 +100,8 @@
     
     //bring the Login Button View to the front
     [self.view bringSubviewToFront:controlButtonsView];
+    
+    
 }
 
 #pragma mark - Transition Delegate Required Method
@@ -107,6 +113,21 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) onClickLogin
+{
+    NSLog(@"elllloooo");
+    /*UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    @try {
+        UIViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:@"SecondViewController"];
+        secondViewController.modalPresentationStyle = UIModalPresentationCustom;
+        secondViewController.transitioningDelegate = self;
+        [self presentViewController:secondViewController animated:YES completion:nil];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);
+    }*/
 }
 
 ///KEEP FOR REFERENCE
