@@ -104,7 +104,7 @@
             }
             velocity.x = -velocity.x;
             velocity.y = -velocity.y;
-            NSLog(@"decelerating with velocity: %@", NSStringFromCGPoint(velocity));
+            //NSLog(@"decelerating with velocity: %@", NSStringFromCGPoint(velocity));
             POPDecayAnimation *decayAnimation = [POPDecayAnimation animation];
             decayAnimation.property = [self boundsOriginProperty];
             decayAnimation.velocity = [NSValue valueWithCGPoint:velocity];
@@ -131,7 +131,7 @@
                 target.x = fmin(target.x, self.contentSize.width - bounds.size.width);
                 target.y = fmin(target.y, self.contentSize.height - bounds.size.height);
             }
-            NSLog(@"bouncing with velocity: %@", decayAnimation.velocity);
+            //NSLog(@"bouncing with velocity: %@", decayAnimation.velocity);
             POPSpringAnimation *springAnimation = [POPSpringAnimation animation];
             springAnimation.property = [self boundsOriginProperty];
             springAnimation.velocity = decayAnimation.velocity;
