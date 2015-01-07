@@ -7,6 +7,7 @@
 //
 
 #import "OPButtonView.h"
+#import "OPButton.h"
 
 @implementation OPButtonView
 
@@ -28,23 +29,40 @@ OPButtonViewWidth;
     if (self == nil) {
         return nil;
     }
-    
     [self formatButtonView];
-    
     return self;
 }
 
 -(void) formatButtonView
 {
-    UIColor *OPColour = [[UIColor alloc] initWithRed:204.0/255.0 green:229.0/255.0 blue:1.0 alpha:1.0];
-    self.backgroundColor = OPColour;
+    self.backgroundColor = [UIColor clearColor];
     self.layer.cornerRadius = self.frame.size.width/90.0;
     self.layer.masksToBounds = YES;
 }
 
--(void) placeButtonInViewWithYPos:(CGFloat)aYPos withPercentageWidth:(float)aPercentageWidth
+-(void) placeButtonInViewWithXPos:(float)anXPos withPercentageWidth:(float)aPercentageWidth withTitle:(NSString*)aTitle
 {
-    //do nothing
+    @try {
+        float widthOfButtonInView = self.frame.size.width*aPercentageWidth/100.0;
+        
+        //add generic button
+        CGRect loginButtonFrame = CGRectMake(anXPos, 0.0, widthOfButtonInView,self.frame.size.height);
+        OPButton* loginButton = [[OPButton alloc] initWithFrame:loginButtonFrame withTitle:aTitle];
+        [self addSubview:loginButton];
+        
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error adding UIButton to view %@",exception);
+    }
+
+}
+
+-(void) placeHorizontalLineInViewWithXCoord:(CGFloat)xCoord
+{
+    CGRect lineFrame = CGRectMake(xCoord, 0.0, 1.0,self.frame.size.height);
+    UIView *lineView = [[UIView alloc] initWithFrame:lineFrame];
+    lineView.backgroundColor = [UIColor blackColor];
+    [self addSubview:lineView];
 }
 
 @end

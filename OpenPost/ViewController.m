@@ -33,9 +33,21 @@
     //add Background view
     [self.view sendSubviewToBack:self.mainBkgView];
     
-    //add the Login Button view
-    OPButtonView* loginButtonView = [[OPButtonView alloc] initWithYCoord:40.0 withSuperView:self.view];
-    [self.view addSubview:loginButtonView];
+    //add the Control Button view
+    OPButtonView* controlButtonsView = [[OPButtonView alloc] initWithYCoord:40.0 withSuperView:self.view];
+    
+    //NOTE: The order of adding subviews affects which has priority in what you see
+    
+    //add a Login Button into the Control Button View
+    [controlButtonsView placeButtonInViewWithXPos:0.0 withPercentageWidth:50.0 withTitle:@"Login"];
+    [self.view addSubview:controlButtonsView];
+    
+    //add a SignUp Button into the Control Button View
+    [controlButtonsView placeButtonInViewWithXPos:0.5*controlButtonsView.frame.size.width withPercentageWidth:50.0 withTitle:@"Sign Up"];
+    [self.view addSubview:controlButtonsView];
+    
+    //add a line between the two Control Buttons in the Control Button View
+    [controlButtonsView placeHorizontalLineInViewWithXCoord:controlButtonsView.frame.size.width*0.5];
     
     //set the maximum size of the view for 3 subviews
     float maxmimumScollLength = totalNumberOfSubViews*self.view.frame.size.height;
@@ -83,7 +95,7 @@
     [self.view addSubview:self.customScrollView];
     
     //bring the Login Button View to the front
-    [self.view bringSubviewToFront:loginButtonView];
+    [self.view bringSubviewToFront:controlButtonsView];
 }
 
 #pragma mark - Transition Delegate Required Method

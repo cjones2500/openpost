@@ -15,6 +15,7 @@
 
 - (id)initWithYCoord:(CGFloat)yCoord withSuperView:(UIView*)aSuperView;
 
--(void) placeButtonInViewWithYPos:(CGFloat)aYPos withPercentageWidth:(float)aPercentageWidth;
+-(void) placeButtonInViewWithXPos:(float)anXPos withPercentageWidth:(float)aPercentageWidth withTitle:(NSString*)aTitle;
+-(void) placeHorizontalLineInViewWithXCoord:(CGFloat)xCoord;
 
 @end
