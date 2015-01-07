@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EB0DB98DD01304EA2D1601FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5214D595456C16793A7FB3F /* libPods.a */; };
 		F90C569B1A5D7A8C0086B71A /* mapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = F90C569A1A5D7A8C0086B71A /* mapshot.png */; };
+		F90C569E1A5D7DFD0086B71A /* OPButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = F90C569D1A5D7DFD0086B71A /* OPButtonView.m */; };
 		F95EADD01A5CB2F800A2F1C8 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */; };
 		F97170981A55EC6B0023AED9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170971A55EC6B0023AED9 /* main.m */; };
 		F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F971709A1A55EC6B0023AED9 /* AppDelegate.m */; };
@@ -42,6 +43,8 @@
 		E11D9D1E56910D8A828E445D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F5214D595456C16793A7FB3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90C569A1A5D7A8C0086B71A /* mapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapshot.png; sourceTree = SOURCE_ROOT; };
+		F90C569C1A5D7DFD0086B71A /* OPButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPButtonView.h; path = ../OPButtonView.h; sourceTree = "<group>"; };
+		F90C569D1A5D7DFD0086B71A /* OPButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPButtonView.m; path = ../OPButtonView.m; sourceTree = "<group>"; };
 		F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomScrollView.h; path = ../CustomScrollView.h; sourceTree = "<group>"; };
 		F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomScrollView.m; path = ../CustomScrollView.m; sourceTree = "<group>"; };
 		F97170921A55EC6B0023AED9 /* OpenPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +158,8 @@
 				F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */,
 				F9C8984D1A5D4C86001E71BB /* OPTextInfoView.h */,
 				F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */,
+				F90C569C1A5D7DFD0086B71A /* OPButtonView.h */,
+				F90C569D1A5D7DFD0086B71A /* OPButtonView.m */,
 			);
 			path = OpenPost;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 				F97170C01A5608190023AED9 /* OPTransition.m in Sources */,
 				F97170981A55EC6B0023AED9 /* main.m in Sources */,
 				F9EEB4881A59665000432F6D /* OPInfoView.m in Sources */,
+				F90C569E1A5D7DFD0086B71A /* OPButtonView.m in Sources */,
 				F97170A11A55EC6B0023AED9 /* ViewController.m in Sources */,
 				F971709E1A55EC6B0023AED9 /* OpenPost.xcdatamodeld in Sources */,
 				F95EADD01A5CB2F800A2F1C8 /* CustomScrollView.m in Sources */,

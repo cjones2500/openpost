@@ -10,6 +10,7 @@
 #import "OPTransition.h"
 #import "OPInfoView.h"
 #import "OPTextInfoView.h"
+#import "OPButtonView.h"
 
 @interface ViewController () <UIViewControllerTransitioningDelegate>
 
@@ -31,6 +32,10 @@
     
     //add Background view
     [self.view sendSubviewToBack:self.mainBkgView];
+    
+    //add the Login Button view
+    OPButtonView* loginButtonView = [[OPButtonView alloc] initWithYCoord:40.0 withSuperView:self.view];
+    [self.view addSubview:loginButtonView];
     
     //set the maximum size of the view for 3 subviews
     float maxmimumScollLength = totalNumberOfSubViews*self.view.frame.size.height;
@@ -76,6 +81,9 @@
     [self.customScrollView addSubview:thirdSubTextInfoView];
     
     [self.view addSubview:self.customScrollView];
+    
+    //bring the Login Button View to the front
+    [self.view bringSubviewToFront:loginButtonView];
 }
 
 #pragma mark - Transition Delegate Required Method
