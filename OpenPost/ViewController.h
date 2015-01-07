@@ -10,16 +10,7 @@
 
 @interface ViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *testLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *mainBkgView;
-
-
-
-//First Info Sub View for main view controller
-@property (weak, nonatomic) IBOutlet UIView *firstInfoSubView;
-@property (nonatomic,assign) float originalFirstInfoViewXPosition;
-@property (nonatomic,assign) BOOL isFirstInfoViewInScreen;
-@property (nonatomic,assign) float firstInfoViewMoveOffAmount;
 
 @end
 

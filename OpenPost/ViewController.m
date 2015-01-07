@@ -19,9 +19,6 @@
 
 @implementation ViewController
 
-// amount of pixels to be considered out of the view (hopefully this is enough...)
-const float firstInfoSubViewYOrigin = 400.0;
-
 /*TODO: Add the decoder and coder methods for:
 - originalFirstInfoViewXPosition
 - firstInfoSubView
@@ -31,11 +28,6 @@ const float firstInfoSubViewYOrigin = 400.0;
 
 //TODO: Add a different maximum and minumum to each OPInfoView
 
-@synthesize originalFirstInfoViewXPosition,
-firstInfoSubView,
-firstInfoViewMoveOffAmount;
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -44,11 +36,23 @@ firstInfoViewMoveOffAmount;
     
     //initialise the customScrollView
     self.customScrollView = [[CustomScrollView alloc] initWithFrame:self.view.bounds];
-    self.customScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 1000.0);
+    self.customScrollView.contentSize = CGSizeMake(self.view.bounds.size.width, 2000.0);
     self.customScrollView.scrollHorizontal = NO;
     
-    OPInfoView * firstOPInfoView = [[OPInfoView alloc] initWithYCoord:100.0 withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
+    //y positions of all the different views
+    float firstOPInfoViewYPos = 150.0;
+    float secondOPInfoViewYPos = firstOPInfoViewYPos + self.customScrollView.frame.size.height;
+    float thirdOPInfoViewYPos = secondOPInfoViewYPos + self.customScrollView.frame.size.height;
+    
+    //create all InfoViews
+    OPInfoView * firstOPInfoView = [[OPInfoView alloc] initWithYCoord:firstOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
      [self.customScrollView addSubview:firstOPInfoView];
+
+    OPInfoView * secondOPInfoView = [[OPInfoView alloc] initWithYCoord:secondOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
+    [self.customScrollView addSubview:secondOPInfoView];
+    
+    OPInfoView * thirdOPInfoView = [[OPInfoView alloc] initWithYCoord:thirdOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
+    [self.customScrollView addSubview:thirdOPInfoView];
     
     [self.view addSubview:self.customScrollView];
 }

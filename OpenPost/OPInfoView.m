@@ -74,6 +74,9 @@ OPInfoViewYMin;
     UIImage * anImageObj;
     anImageObj = [UIImage imageNamed:anImage];
     [self setImage:anImageObj];
+    
+    self.layer.cornerRadius = self.frame.size.width/2.0;
+    self.layer.masksToBounds = YES;
 }
 
 
