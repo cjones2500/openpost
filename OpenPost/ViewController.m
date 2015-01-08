@@ -72,7 +72,7 @@
     OPInfoView * firstOPInfoView = [[OPInfoView alloc] initWithYCoord:firstOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"mapshot.png"];
      [self.customScrollView addSubview:firstOPInfoView];
 
-    OPInfoView * secondOPInfoView = [[OPInfoView alloc] initWithYCoord:secondOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"mapshot.png"];
+    OPInfoView * secondOPInfoView = [[OPInfoView alloc] initWithYCoord:secondOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"op.png"];
     [self.customScrollView addSubview:secondOPInfoView];
     
     OPInfoView * thirdOPInfoView = [[OPInfoView alloc] initWithYCoord:thirdOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];

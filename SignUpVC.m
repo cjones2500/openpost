@@ -40,14 +40,13 @@
         [self addLogo:logo];
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [self removeLogo:logo withBkg:bkg];
-            
         });
     });
 }
 
 -(void) removeLogo:(OPLogo*)aLogo withBkg:(UIImageView*)abkg
 {
-    [UIView animateWithDuration:0.6
+    [UIView animateWithDuration:0.4
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
@@ -61,7 +60,7 @@
 
 -(void) addLogo:(OPLogo*)aLogo
 {
-    [UIView animateWithDuration:0.6
+    [UIView animateWithDuration:0.4
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
