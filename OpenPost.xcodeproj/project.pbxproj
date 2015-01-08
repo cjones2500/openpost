@@ -11,6 +11,7 @@
 		F90C569B1A5D7A8C0086B71A /* mapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = F90C569A1A5D7A8C0086B71A /* mapshot.png */; };
 		F90C569E1A5D7DFD0086B71A /* OPButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = F90C569D1A5D7DFD0086B71A /* OPButtonView.m */; };
 		F934E2381A5EDD4A006EBA6D /* op.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E2371A5EDD4A006EBA6D /* op.png */; };
+		F934E23A1A5EDF5E006EBA6D /* openPost.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E2391A5EDF5E006EBA6D /* openPost.png */; };
 		F95EADD01A5CB2F800A2F1C8 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */; };
 		F97170981A55EC6B0023AED9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170971A55EC6B0023AED9 /* main.m */; };
 		F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F971709A1A55EC6B0023AED9 /* AppDelegate.m */; };
@@ -50,6 +51,7 @@
 		F90C569C1A5D7DFD0086B71A /* OPButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPButtonView.h; path = ../OPButtonView.h; sourceTree = "<group>"; };
 		F90C569D1A5D7DFD0086B71A /* OPButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPButtonView.m; path = ../OPButtonView.m; sourceTree = "<group>"; };
 		F934E2371A5EDD4A006EBA6D /* op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = op.png; path = ../../op.png; sourceTree = "<group>"; };
+		F934E2391A5EDF5E006EBA6D /* openPost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = openPost.png; path = ../../openPost.png; sourceTree = "<group>"; };
 		F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomScrollView.h; path = ../CustomScrollView.h; sourceTree = "<group>"; };
 		F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomScrollView.m; path = ../CustomScrollView.m; sourceTree = "<group>"; };
 		F97170921A55EC6B0023AED9 /* OpenPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +158,7 @@
 				F9EEB48B1A5C29BA00432F6D /* barca2.jpg */,
 				F97170C61A5774540023AED9 /* barca.jpg */,
 				F934E2371A5EDD4A006EBA6D /* op.png */,
+				F934E2391A5EDF5E006EBA6D /* openPost.png */,
 				F90C569A1A5D7A8C0086B71A /* mapshot.png */,
 				F97170A21A55EC6B0023AED9 /* Main.storyboard */,
 				F97170A51A55EC6B0023AED9 /* Images.xcassets */,
@@ -297,6 +300,7 @@
 				F9EEB48C1A5C29BA00432F6D /* barca2.jpg in Resources */,
 				F97170A61A55EC6B0023AED9 /* Images.xcassets in Resources */,
 				F934E2381A5EDD4A006EBA6D /* op.png in Resources */,
+				F934E23A1A5EDF5E006EBA6D /* openPost.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

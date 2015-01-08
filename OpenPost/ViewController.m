@@ -29,10 +29,16 @@
     [super viewDidLoad];
     
     //total number of subview in this ViewController
-    float totalNumberOfSubViews = 3.0;
+    float totalNumberOfSubViews = 4.0;
     
     //add Background view
+    [self.view addSubview:self.mainBkgView];
     [self.view sendSubviewToBack:self.mainBkgView];
+    
+    CGRect mainBkgFrame = CGRectMake(self.mainBkgView.frame.origin.x, self.mainBkgView.frame.origin.x, self.mainBkgView.frame.size.width, self.mainBkgView.frame.size.height);
+    self.mainBkgView.frame = mainBkgFrame;
+    
+
     
     //add the Control Button view
     OPButtonView* controlButtonsView = [[OPButtonView alloc] initWithYCoord:40.0 withSuperView:self.view];
@@ -64,21 +70,29 @@
     self.customScrollView.scrollHorizontal = NO;
     
     //y positions of all the different views
-    float firstOPInfoViewYPos = 0.5*self.view.frame.size.height - 120.0; //NOTE:hardcorded the center of the first view
+    float preFirstOPInfoViewYPos = 0.5*self.view.frame.size.height - 120.0; //NOTE:hardcorded the center of the first view
+    float firstOPInfoViewYPos = preFirstOPInfoViewYPos + self.customScrollView.frame.size.height;
     float secondOPInfoViewYPos = firstOPInfoViewYPos + self.customScrollView.frame.size.height;
     float thirdOPInfoViewYPos = secondOPInfoViewYPos + self.customScrollView.frame.size.height;
     
     //create all InfoViews
+    OPInfoView * preFirstOPInfoView = [[OPInfoView alloc] initWithYCoord:preFirstOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"openPost.png"];
+    preFirstOPInfoView.layer.borderWidth = 0.0f;
+    [self.customScrollView addSubview:preFirstOPInfoView];
+    
     OPInfoView * firstOPInfoView = [[OPInfoView alloc] initWithYCoord:firstOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"mapshot.png"];
      [self.customScrollView addSubview:firstOPInfoView];
 
-    OPInfoView * secondOPInfoView = [[OPInfoView alloc] initWithYCoord:secondOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"op.png"];
+    OPInfoView * secondOPInfoView = [[OPInfoView alloc] initWithYCoord:secondOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca2.jpg"];
     [self.customScrollView addSubview:secondOPInfoView];
     
     OPInfoView * thirdOPInfoView = [[OPInfoView alloc] initWithYCoord:thirdOPInfoViewYPos withSuperView:self.customScrollView withAnImageNamed:@"barca.jpg"];
     [self.customScrollView addSubview:thirdOPInfoView];
     
     //Create all primary Text Views
+    OPTextInfoView * preFirstTextInfoView = [[OPTextInfoView alloc] initOPTextViewWithSuperView:self.customScrollView withText:@"WELCOME TO OPENPOST" linkedToInfoView:preFirstOPInfoView withTextFontSize:17.0 withFontType:@"HelveticaNeue-Thin"];
+    [self.customScrollView addSubview:preFirstTextInfoView];
+    
     OPTextInfoView * firstTextInfoView = [[OPTextInfoView alloc] initOPTextViewWithSuperView:self.customScrollView withText:@"SEND PACKAGES ANYWHERE, ANYTIME" linkedToInfoView:firstOPInfoView withTextFontSize:17.0 withFontType:@"HelveticaNeue-Thin"];
     [self.customScrollView addSubview:firstTextInfoView];
     
@@ -97,8 +111,8 @@
     
     OPTextInfoView * thirdSubTextInfoView = [[OPTextInfoView alloc] initOPTextSubViewWithSuperView:self.customScrollView withText:@"Rate your courier and improve the Open Post experience" linkedToTextInfoView:thirdTextInfoView withTextFontSize:16.0 withFontType:@"HelveticaNeue-Thin"];
     [self.customScrollView addSubview:thirdSubTextInfoView];
-    
     [self.view addSubview:self.customScrollView];
+    
     
     //bring the Login Button View to the front
     [self.view bringSubviewToFront:controlButtonsView];
