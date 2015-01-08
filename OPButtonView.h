@@ -17,6 +17,6 @@
 
 -(void) placeButtonInViewWithXPos:(float)anXPos withPercentageWidth:(float)aPercentageWidth withTitle:(NSString*)aTitle;
 -(void) placeHorizontalLineInViewWithXCoord:(CGFloat)xCoord;
--(void) addTargetToButtonWithTitle:(NSString*)aTitle;
+-(void) addTargetToButtonWithTitle:(NSString*)aTitle withFunction:(SEL)anAction fromObject:(id)theObject;
 
 @end

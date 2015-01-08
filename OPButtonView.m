@@ -8,6 +8,7 @@
 
 #import "OPButtonView.h"
 #import "OPButton.h"
+#import "ViewController.h"
 
 @implementation OPButtonView
 
@@ -55,18 +56,13 @@ OPButtonViewWidth;
     }
 }
 
--(void) addTargetToButtonWithTitle:(NSString*)aTitle
+-(void) addTargetToButtonWithTitle:(NSString*)aTitle withFunction:(SEL)anAction fromObject:(id)theObject
 {
     for (OPButton* aOPButton in self.subviews){
         if([aOPButton isKindOfClass:[OPButton class]]){
-            [aOPButton addTarget:self action:@selector(onClick) forControlEvents:UIControlEventTouchUpInside];
+            [aOPButton addTarget:theObject action:@selector(onClickLogin) forControlEvents:UIControlEventTouchUpInside];
         }
     }
-}
-
--(void) onClick
-{
-    NSLog(@"hello");
 }
 
 -(void) placeHorizontalLineInViewWithXCoord:(CGFloat)xCoord
