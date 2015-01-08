@@ -7,6 +7,7 @@
 //
 
 #import "SignUpVC.h"
+#import "OPLogo.h"
 
 @interface SignUpVC ()
 
@@ -16,7 +17,59 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    //add Logo
+    __block OPLogo* logo = [[OPLogo alloc] initWithFrame:self.view.frame];
+    __block UIImageView * bkg = [[UIImageView alloc] initWithFrame:logo.frame];
+    UIImage* anImageObj = [UIImage imageNamed:@"barca2.jpg"];
+    [bkg setImage:anImageObj];
+    [self.view addSubview:bkg];
+    [self.view sendSubviewToBack:bkg];
+    [self.view addSubview:logo];
+
+    logo.alpha = 0.0;
+    
+    
+    //Play around with the Logo appearing and dissappearing
+    
+    //toggle showing the logo 
+    double delayInSeconds = 0.5;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(0.0, dispatch_get_main_queue(), ^(void){
+        [self addLogo:logo];
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [self removeLogo:logo withBkg:bkg];
+            
+        });
+    });
+}
+
+-(void) removeLogo:(OPLogo*)aLogo withBkg:(UIImageView*)abkg
+{
+    [UIView animateWithDuration:0.6
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         aLogo.alpha = 0.0;
+                         abkg.alpha = 0.0; // remove the background as well
+                     }
+                     completion:^(BOOL finished){
+                         //do nothing
+    }];
+}
+
+-(void) addLogo:(OPLogo*)aLogo
+{
+    [UIView animateWithDuration:0.6
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         aLogo.alpha = 1.0;
+                     }
+                     completion:^(BOOL finished){
+                         //do nothing
+                     }];
 }
 
 - (void)didReceiveMemoryWarning {

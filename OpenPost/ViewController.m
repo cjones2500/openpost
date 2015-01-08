@@ -11,6 +11,7 @@
 #import "OPInfoView.h"
 #import "OPTextInfoView.h"
 #import "OPButtonView.h"
+#import "OPLogo.h"
 
 @interface ViewController () <UIViewControllerTransitioningDelegate>
 
@@ -101,6 +102,7 @@
     
     //bring the Login Button View to the front
     [self.view bringSubviewToFront:controlButtonsView];
+    
     
 }
 
