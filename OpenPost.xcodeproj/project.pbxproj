@@ -24,6 +24,7 @@
 		F97170C71A5774540023AED9 /* barca.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F97170C61A5774540023AED9 /* barca.jpg */; };
 		F97170CA1A58439C0023AED9 /* OPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170C91A58439C0023AED9 /* OPScrollView.m */; };
 		F9C0607D1A5D8F5A00688883 /* OPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0607C1A5D8F5A00688883 /* OPButton.m */; };
+		F9C060801A5EA39700688883 /* SignUpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0607F1A5EA39700688883 /* SignUpVC.m */; };
 		F9C8984F1A5D4C86001E71BB /* OPTextInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */; };
 		F9EEB4881A59665000432F6D /* OPInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F9EEB4871A59665000432F6D /* OPInfoView.m */; };
 		F9EEB48C1A5C29BA00432F6D /* barca2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F9EEB48B1A5C29BA00432F6D /* barca2.jpg */; };
@@ -71,6 +72,8 @@
 		F97170C91A58439C0023AED9 /* OPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPScrollView.m; sourceTree = "<group>"; };
 		F9C0607B1A5D8F5A00688883 /* OPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPButton.h; path = ../OPButton.h; sourceTree = "<group>"; };
 		F9C0607C1A5D8F5A00688883 /* OPButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPButton.m; path = ../OPButton.m; sourceTree = "<group>"; };
+		F9C0607E1A5EA39700688883 /* SignUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpVC.h; path = ../SignUpVC.h; sourceTree = "<group>"; };
+		F9C0607F1A5EA39700688883 /* SignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpVC.m; path = ../SignUpVC.m; sourceTree = "<group>"; };
 		F9C8984D1A5D4C86001E71BB /* OPTextInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPTextInfoView.h; path = ../OPTextInfoView.h; sourceTree = "<group>"; };
 		F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPTextInfoView.m; path = ../OPTextInfoView.m; sourceTree = "<group>"; };
 		F9EEB4861A59665000432F6D /* OPInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPInfoView.h; sourceTree = "<group>"; };
@@ -139,6 +142,8 @@
 			children = (
 				F97170991A55EC6B0023AED9 /* AppDelegate.h */,
 				F971709A1A55EC6B0023AED9 /* AppDelegate.m */,
+				F9C0607E1A5EA39700688883 /* SignUpVC.h */,
+				F9C0607F1A5EA39700688883 /* SignUpVC.m */,
 				F97170C11A5620D60023AED9 /* LoginVC.h */,
 				F97170C21A5620D60023AED9 /* LoginVC.m */,
 				F971709F1A55EC6B0023AED9 /* ViewController.h */,
@@ -341,6 +346,7 @@
 				F97170C01A5608190023AED9 /* OPTransition.m in Sources */,
 				F97170981A55EC6B0023AED9 /* main.m in Sources */,
 				F9EEB4881A59665000432F6D /* OPInfoView.m in Sources */,
+				F9C060801A5EA39700688883 /* SignUpVC.m in Sources */,
 				F90C569E1A5D7DFD0086B71A /* OPButtonView.m in Sources */,
 				F97170A11A55EC6B0023AED9 /* ViewController.m in Sources */,
 				F971709E1A55EC6B0023AED9 /* OpenPost.xcdatamodeld in Sources */,

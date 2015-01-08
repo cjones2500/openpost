@@ -41,15 +41,15 @@
     //add a Login Button into the Control Button View
     [controlButtonsView placeButtonInViewWithXPos:0.0 withPercentageWidth:50.0 withTitle:@"Login"];
     [self.view addSubview:controlButtonsView];
-    SEL onClickSelector = @selector(onClickLogin);
-    [controlButtonsView addTargetToButtonWithTitle:@"Login" withFunction:onClickSelector fromObject:self];
-    
-    //add actions to the differentButtons
-    
     
     //add a SignUp Button into the Control Button View
     [controlButtonsView placeButtonInViewWithXPos:0.5*controlButtonsView.frame.size.width withPercentageWidth:50.0 withTitle:@"Sign Up"];
     [self.view addSubview:controlButtonsView];
+    
+    //add function to the ControlButton View
+    [controlButtonsView goToLoginVCWithVC:self];
+    [controlButtonsView goToSignUpVCWithVC:self];
+    
     
     //add a line between the two Control Buttons in the Control Button View
     [controlButtonsView placeHorizontalLineInViewWithXCoord:controlButtonsView.frame.size.width*0.5];
@@ -104,14 +104,28 @@
     
 }
 
-- (void) onClickLogin
+- (void) onClickToLoginVC
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     @try {
-        UIViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
-        secondViewController.modalPresentationStyle = UIModalPresentationCustom;
-        secondViewController.transitioningDelegate = self;
-        [self presentViewController:secondViewController animated:YES completion:nil];
+        UIViewController *loginVC = [storyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
+        loginVC.modalPresentationStyle = UIModalPresentationCustom;
+        loginVC.transitioningDelegate = self;
+        [self presentViewController:loginVC animated:YES completion:nil];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);
+    }
+}
+
+- (void) onClickToSignUpVC
+{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    @try {
+        UIViewController *signUpVC = [storyboard instantiateViewControllerWithIdentifier:@"SignUpVC"];
+        signUpVC.modalPresentationStyle = UIModalPresentationCustom;
+        signUpVC.transitioningDelegate = self;
+        [self presentViewController:signUpVC animated:YES completion:nil];
     }
     @catch (NSException *exception) {
         NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);

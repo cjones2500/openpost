@@ -56,11 +56,24 @@ OPButtonViewWidth;
     }
 }
 
--(void) addTargetToButtonWithTitle:(NSString*)aTitle withFunction:(SEL)anAction fromObject:(id)theObject
+-(void) goToLoginVCWithVC:(id)theMainVC
 {
     for (OPButton* aOPButton in self.subviews){
         if([aOPButton isKindOfClass:[OPButton class]]){
-            [aOPButton addTarget:theObject action:@selector(onClickLogin) forControlEvents:UIControlEventTouchUpInside];
+            if([aOPButton.titleLabel.text isEqualToString:@"Login"]){
+                [aOPButton addTarget:theMainVC action:@selector(onClickToLoginVC) forControlEvents:UIControlEventTouchUpInside];
+            }
+        }
+    }
+}
+
+-(void) goToSignUpVCWithVC:(id)theMainVC
+{
+    for (OPButton* aOPButton in self.subviews){
+        if([aOPButton isKindOfClass:[OPButton class]]){
+            if([aOPButton.titleLabel.text isEqualToString:@"Sign Up"]){
+                [aOPButton addTarget:theMainVC action:@selector(onClickToSignUpVC) forControlEvents:UIControlEventTouchUpInside];
+            }
         }
     }
 }
