@@ -6,14 +6,14 @@
 //  Copyright (c) 2015 Christopher Jones. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "LoginVC.h"
 #import "OPTransition.h"
 
-@interface SecondViewController () <UIViewControllerTransitioningDelegate>
+@interface LoginVC () <UIViewControllerTransitioningDelegate>
 
 @end
 
-@implementation SecondViewController
+@implementation LoginVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];

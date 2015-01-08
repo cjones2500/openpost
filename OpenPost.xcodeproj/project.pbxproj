@@ -20,7 +20,7 @@
 		F97170A91A55EC6B0023AED9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F97170A71A55EC6B0023AED9 /* LaunchScreen.xib */; };
 		F97170B51A55EC6B0023AED9 /* OpenPostTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170B41A55EC6B0023AED9 /* OpenPostTests.m */; };
 		F97170C01A5608190023AED9 /* OPTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170BF1A5608190023AED9 /* OPTransition.m */; };
-		F97170C31A5620D60023AED9 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170C21A5620D60023AED9 /* SecondViewController.m */; };
+		F97170C31A5620D60023AED9 /* LoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170C21A5620D60023AED9 /* LoginVC.m */; };
 		F97170C71A5774540023AED9 /* barca.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F97170C61A5774540023AED9 /* barca.jpg */; };
 		F97170CA1A58439C0023AED9 /* OPScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170C91A58439C0023AED9 /* OPScrollView.m */; };
 		F9C0607D1A5D8F5A00688883 /* OPButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F9C0607C1A5D8F5A00688883 /* OPButton.m */; };
@@ -64,8 +64,8 @@
 		F97170B41A55EC6B0023AED9 /* OpenPostTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenPostTests.m; sourceTree = "<group>"; };
 		F97170BE1A5608190023AED9 /* OPTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTransition.h; sourceTree = "<group>"; };
 		F97170BF1A5608190023AED9 /* OPTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPTransition.m; sourceTree = "<group>"; };
-		F97170C11A5620D60023AED9 /* SecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		F97170C21A5620D60023AED9 /* SecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		F97170C11A5620D60023AED9 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
+		F97170C21A5620D60023AED9 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
 		F97170C61A5774540023AED9 /* barca.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barca.jpg; sourceTree = "<group>"; };
 		F97170C81A58439C0023AED9 /* OPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPScrollView.h; sourceTree = "<group>"; };
 		F97170C91A58439C0023AED9 /* OPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPScrollView.m; sourceTree = "<group>"; };
@@ -139,8 +139,8 @@
 			children = (
 				F97170991A55EC6B0023AED9 /* AppDelegate.h */,
 				F971709A1A55EC6B0023AED9 /* AppDelegate.m */,
-				F97170C11A5620D60023AED9 /* SecondViewController.h */,
-				F97170C21A5620D60023AED9 /* SecondViewController.m */,
+				F97170C11A5620D60023AED9 /* LoginVC.h */,
+				F97170C21A5620D60023AED9 /* LoginVC.m */,
 				F971709F1A55EC6B0023AED9 /* ViewController.h */,
 				F97170A01A55EC6B0023AED9 /* ViewController.m */,
 				F9EEB48B1A5C29BA00432F6D /* barca2.jpg */,
@@ -334,7 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9C8984F1A5D4C86001E71BB /* OPTextInfoView.m in Sources */,
-				F97170C31A5620D60023AED9 /* SecondViewController.m in Sources */,
+				F97170C31A5620D60023AED9 /* LoginVC.m in Sources */,
 				F97170CA1A58439C0023AED9 /* OPScrollView.m in Sources */,
 				F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */,
 				F9C0607D1A5D8F5A00688883 /* OPButton.m in Sources */,

@@ -48,17 +48,12 @@ alphaValue;
     
     UIView * containerView = [transitionContext containerView];
     
-    //establish a totally transparent secondViewController
-    //nextViewController.view.alpha = alphaValue;
-    //nextViewController.view.frame = containerView.bounds;
-    
-    
     if(isPresentTransition){
         //establish the transition to move right
         CATransition *transition = [CATransition animation];
         transition.duration = 0.5;
-        transition.type = kCATransitionPush;
-        transition.subtype = kCATransitionFromRight;
+        transition.type = kCATransitionReveal;//kCATransitionPush;
+        transition.subtype = kCATruncationMiddle;
         [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
         [containerView.layer addAnimation:transition forKey:nil];
         [containerView addSubview:nextViewController.view];
@@ -67,8 +62,8 @@ alphaValue;
         //establish the transition to move left
         CATransition *transition = [CATransition animation];
         transition.duration = 0.5;
-        transition.type = kCATransitionPush;
-        transition.subtype = kCATransitionFromLeft;
+        transition.type = kCATransitionReveal;
+        transition.subtype = kCATruncationMiddle;
         [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
         [containerView.layer addAnimation:transition forKey:nil];
         [containerView addSubview:nextViewController.view];

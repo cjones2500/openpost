@@ -43,7 +43,7 @@
         <!--SecondViewController-->
         <scene sceneID="b2C-LP-cXE">
             <objects>
-                <viewController storyboardIdentifier="SecondViewController" title="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BFH-QC-Ik0" customClass="SecondViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" title="SecondViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BFH-QC-Ik0" customClass="LoginVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gW1-Zm-sqb"/>
                         <viewControllerLayoutGuide type="bottom" id="O1z-Wy-uym"/>

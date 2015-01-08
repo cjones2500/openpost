@@ -108,7 +108,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     @try {
-        UIViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:@"SecondViewController"];
+        UIViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginVC"];
         secondViewController.modalPresentationStyle = UIModalPresentationCustom;
         secondViewController.transitioningDelegate = self;
         [self presentViewController:secondViewController animated:YES completion:nil];
@@ -128,20 +128,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
-///KEEP FOR REFERENCE
-///Helpful for transitioning to a different view after confirmation
-/*UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
- @try {
- UIViewController *secondViewController = [storyboard instantiateViewControllerWithIdentifier:@"SecondViewController"];
- secondViewController.modalPresentationStyle = UIModalPresentationCustom;
- secondViewController.transitioningDelegate = self;
- [self presentViewController:secondViewController animated:YES completion:nil];
- }
- @catch (NSException *exception) {
- NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);
- }*/
 
 @end
