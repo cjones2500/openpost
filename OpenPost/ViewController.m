@@ -90,7 +90,7 @@
     [self.customScrollView addSubview:thirdOPInfoView];
     
     //Create all primary Text Views
-    OPTextInfoView * preFirstTextInfoView = [[OPTextInfoView alloc] initOPTextViewWithSuperView:self.customScrollView withText:@"WELCOME TO OPENPOST" linkedToInfoView:preFirstOPInfoView withTextFontSize:17.0 withFontType:@"HelveticaNeue-Thin"];
+    OPTextInfoView * preFirstTextInfoView = [[OPTextInfoView alloc] initOPTextViewWithSuperView:self.customScrollView withText:@"JOIN THE REVOLUTION" linkedToInfoView:preFirstOPInfoView withTextFontSize:17.0 withFontType:@"HelveticaNeue-Thin"];
     [self.customScrollView addSubview:preFirstTextInfoView];
     
     OPTextInfoView * firstTextInfoView = [[OPTextInfoView alloc] initOPTextViewWithSuperView:self.customScrollView withText:@"SEND PACKAGES ANYWHERE, ANYTIME" linkedToInfoView:firstOPInfoView withTextFontSize:17.0 withFontType:@"HelveticaNeue-Thin"];
@@ -103,6 +103,9 @@
     [self.customScrollView addSubview:thirdTextInfoView];
     
     //Create all secondary Text Views
+    OPTextInfoView* preFirstSubTextInfoView = [[OPTextInfoView alloc] initOPTextSubViewWithSuperView:self.customScrollView withText:@"Send packages anytime or earn money by carrying them" linkedToTextInfoView:preFirstTextInfoView withTextFontSize:16.0 withFontType:@"HelveticaNeue-Thin"];
+    [self.customScrollView addSubview:preFirstSubTextInfoView];
+    
     OPTextInfoView * firstSubTextInfoView = [[OPTextInfoView alloc] initOPTextSubViewWithSuperView:self.customScrollView withText:@"OpenPost picks up and sends packages from any location" linkedToTextInfoView:firstTextInfoView withTextFontSize:16.0 withFontType:@"HelveticaNeue-Thin"];
     [self.customScrollView addSubview:firstSubTextInfoView];
     

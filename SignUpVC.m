@@ -8,6 +8,8 @@
 
 #import "SignUpVC.h"
 #import "OPLogo.h"
+#import "OPButton.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface SignUpVC ()
 
@@ -19,6 +21,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     
+    [self buildSignUpView]; // buildBasicView
+    
     //add Logo
     __block OPLogo* logo = [[OPLogo alloc] initWithFrame:self.view.frame];
     __block UIImageView * bkg = [[UIImageView alloc] initWithFrame:logo.frame];
@@ -27,9 +31,7 @@
     [self.view addSubview:bkg];
     [self.view sendSubviewToBack:bkg];
     [self.view addSubview:logo];
-
     logo.alpha = 0.0;
-    
     
     //Play around with the Logo appearing and dissappearing
     
@@ -38,11 +40,30 @@
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
     dispatch_after(0.0, dispatch_get_main_queue(), ^(void){
         [self addLogo:logo];
+        //dispatch_sync(dispatch_get_main_queue(), ^(void){
         dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
             [self removeLogo:logo withBkg:bkg];
         });
     });
 }
+
+-(void) buildSignUpView
+{
+    //create the submit button
+    float submitButtonWidth = 0.7*self.view.frame.size.width;
+    float submitButtonXPosition = 0.2*0.7*self.view.frame.size.width;
+    float submitButtonHeight = 0.1*self.view.frame.size.height;
+    float submitButtonYPosition = 0.7*self.view.frame.size.height - submitButtonHeight;
+    CGRect submitButtonFrame = CGRectMake(submitButtonXPosition, submitButtonYPosition, submitButtonWidth, submitButtonHeight);
+    OPButton* proceedButton = [[OPButton alloc] initWithFrame:submitButtonFrame withTitle:@"Join the Revolution!"];
+    [self.view addSubview:proceedButton];
+    
+    FBLoginView *loginView = [[FBLoginView alloc] init];
+    loginView.center = self.view.center;
+    [self.view addSubview:loginView];
+    
+}
+
 
 -(void) removeLogo:(OPLogo*)aLogo withBkg:(UIImageView*)abkg
 {
@@ -51,7 +72,7 @@
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
                          aLogo.alpha = 0.0;
-                         abkg.alpha = 0.0; // remove the background as well
+                         //abkg.alpha = 0.0; // remove the background as well
                      }
                      completion:^(BOOL finished){
                          //do nothing
