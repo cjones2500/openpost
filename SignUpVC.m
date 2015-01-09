@@ -60,7 +60,7 @@
     
     FBLoginView *loginView = [[FBLoginView alloc] init];
     loginView.center = self.view.center;
-    [self.FBUtility localizedStringForKey:@"FBLV:LogOutButton" withDefault:@"Log out"];
+    //[self.FBUtility localizedStringForKey:@"FBLV:LogOutButton" withDefault:@"Log out"];
     float loginViewYPos = 0.5*self.view.frame.size.height - submitButtonHeight;
     CGRect fbLoginFrame = CGRectMake(submitButtonXPosition, loginViewYPos, submitButtonWidth, submitButtonHeight);
     loginView.frame = fbLoginFrame;
