@@ -10,6 +10,7 @@
 
 @implementation OPInfoView
 
+
 @synthesize OPInfoViewHeight,
 OPInfoViewWidth,
 OPInfoViewGesture,

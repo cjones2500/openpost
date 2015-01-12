@@ -10,8 +10,8 @@
 		EB0DB98DD01304EA2D1601FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5214D595456C16793A7FB3F /* libPods.a */; };
 		F90C569B1A5D7A8C0086B71A /* mapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = F90C569A1A5D7A8C0086B71A /* mapshot.png */; };
 		F90C569E1A5D7DFD0086B71A /* OPButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = F90C569D1A5D7DFD0086B71A /* OPButtonView.m */; };
-		F934E2381A5EDD4A006EBA6D /* op.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E2371A5EDD4A006EBA6D /* op.png */; };
-		F934E23A1A5EDF5E006EBA6D /* openPost.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E2391A5EDF5E006EBA6D /* openPost.png */; };
+		F934E5FA1A646C2C006EBA6D /* op.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F81A646C2C006EBA6D /* op.png */; };
+		F934E5FB1A646C2C006EBA6D /* openPost.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F91A646C2C006EBA6D /* openPost.png */; };
 		F95EADD01A5CB2F800A2F1C8 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */; };
 		F97170981A55EC6B0023AED9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170971A55EC6B0023AED9 /* main.m */; };
 		F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F971709A1A55EC6B0023AED9 /* AppDelegate.m */; };
@@ -50,8 +50,8 @@
 		F90C569A1A5D7A8C0086B71A /* mapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapshot.png; sourceTree = SOURCE_ROOT; };
 		F90C569C1A5D7DFD0086B71A /* OPButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPButtonView.h; path = ../OPButtonView.h; sourceTree = "<group>"; };
 		F90C569D1A5D7DFD0086B71A /* OPButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPButtonView.m; path = ../OPButtonView.m; sourceTree = "<group>"; };
-		F934E2371A5EDD4A006EBA6D /* op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = op.png; path = ../../op.png; sourceTree = "<group>"; };
-		F934E2391A5EDF5E006EBA6D /* openPost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = openPost.png; path = ../../openPost.png; sourceTree = "<group>"; };
+		F934E5F81A646C2C006EBA6D /* op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = op.png; sourceTree = SOURCE_ROOT; };
+		F934E5F91A646C2C006EBA6D /* openPost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openPost.png; sourceTree = SOURCE_ROOT; };
 		F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomScrollView.h; path = ../CustomScrollView.h; sourceTree = "<group>"; };
 		F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomScrollView.m; path = ../CustomScrollView.m; sourceTree = "<group>"; };
 		F97170921A55EC6B0023AED9 /* OpenPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,9 +157,9 @@
 				F97170A01A55EC6B0023AED9 /* ViewController.m */,
 				F9EEB48B1A5C29BA00432F6D /* barca2.jpg */,
 				F97170C61A5774540023AED9 /* barca.jpg */,
-				F934E2371A5EDD4A006EBA6D /* op.png */,
-				F934E2391A5EDF5E006EBA6D /* openPost.png */,
 				F90C569A1A5D7A8C0086B71A /* mapshot.png */,
+				F934E5F81A646C2C006EBA6D /* op.png */,
+				F934E5F91A646C2C006EBA6D /* openPost.png */,
 				F97170A21A55EC6B0023AED9 /* Main.storyboard */,
 				F97170A51A55EC6B0023AED9 /* Images.xcassets */,
 				F97170A71A55EC6B0023AED9 /* LaunchScreen.xib */,
@@ -300,8 +300,8 @@
 				F97170A91A55EC6B0023AED9 /* LaunchScreen.xib in Resources */,
 				F9EEB48C1A5C29BA00432F6D /* barca2.jpg in Resources */,
 				F97170A61A55EC6B0023AED9 /* Images.xcassets in Resources */,
-				F934E2381A5EDD4A006EBA6D /* op.png in Resources */,
-				F934E23A1A5EDF5E006EBA6D /* openPost.png in Resources */,
+				F934E5FA1A646C2C006EBA6D /* op.png in Resources */,
+				F934E5FB1A646C2C006EBA6D /* openPost.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
