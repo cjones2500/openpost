@@ -13,6 +13,7 @@
 		F934E5FA1A646C2C006EBA6D /* op.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F81A646C2C006EBA6D /* op.png */; };
 		F934E5FB1A646C2C006EBA6D /* openPost.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F91A646C2C006EBA6D /* openPost.png */; };
 		F934E5FE1A6472A3006EBA6D /* OPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F934E5FD1A6472A3006EBA6D /* OPTextField.m */; };
+		F934E6011A647D60006EBA6D /* OPMapVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F934E6001A647D60006EBA6D /* OPMapVC.m */; };
 		F95EADD01A5CB2F800A2F1C8 /* CustomScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */; };
 		F97170981A55EC6B0023AED9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F97170971A55EC6B0023AED9 /* main.m */; };
 		F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F971709A1A55EC6B0023AED9 /* AppDelegate.m */; };
@@ -55,6 +56,8 @@
 		F934E5F91A646C2C006EBA6D /* openPost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openPost.png; sourceTree = SOURCE_ROOT; };
 		F934E5FC1A6472A3006EBA6D /* OPTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPTextField.h; path = ../OPTextField.h; sourceTree = "<group>"; };
 		F934E5FD1A6472A3006EBA6D /* OPTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPTextField.m; path = ../OPTextField.m; sourceTree = "<group>"; };
+		F934E5FF1A647D60006EBA6D /* OPMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPMapVC.h; path = ../OPMapVC.h; sourceTree = "<group>"; };
+		F934E6001A647D60006EBA6D /* OPMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPMapVC.m; path = ../OPMapVC.m; sourceTree = "<group>"; };
 		F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomScrollView.h; path = ../CustomScrollView.h; sourceTree = "<group>"; };
 		F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomScrollView.m; path = ../CustomScrollView.m; sourceTree = "<group>"; };
 		F97170921A55EC6B0023AED9 /* OpenPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +155,8 @@
 			children = (
 				F97170991A55EC6B0023AED9 /* AppDelegate.h */,
 				F971709A1A55EC6B0023AED9 /* AppDelegate.m */,
+				F934E5FF1A647D60006EBA6D /* OPMapVC.h */,
+				F934E6001A647D60006EBA6D /* OPMapVC.m */,
 				F9C0607E1A5EA39700688883 /* SignUpVC.h */,
 				F9C0607F1A5EA39700688883 /* SignUpVC.m */,
 				F97170C11A5620D60023AED9 /* LoginVC.h */,
@@ -367,6 +372,7 @@
 				F97170981A55EC6B0023AED9 /* main.m in Sources */,
 				F9EEB4881A59665000432F6D /* OPInfoView.m in Sources */,
 				F9C060801A5EA39700688883 /* SignUpVC.m in Sources */,
+				F934E6011A647D60006EBA6D /* OPMapVC.m in Sources */,
 				F90C569E1A5D7DFD0086B71A /* OPButtonView.m in Sources */,
 				F97170A11A55EC6B0023AED9 /* ViewController.m in Sources */,
 				F9806F331A5EB255009FEE60 /* OPLogo.m in Sources */,

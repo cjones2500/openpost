@@ -11,8 +11,9 @@
 #import "OPButton.h"
 #import "OPTextField.h"
 #import <FacebookSDK.h>
+#import "OPMapVC.h"
 
-@interface LoginVC () <UIViewControllerTransitioningDelegate>
+@interface LoginVC () <UIViewControllerTransitioningDelegate,FBLoginViewDelegate>
 
 @end
 
@@ -21,6 +22,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    //check the current Facebook status
+    [self checkFacebookStatus];
     
     //create the submit button
     float submitButtonWidth = 1.0*self.view.frame.size.width;
@@ -40,6 +44,7 @@
     float loginVIewXPos = 0.09*self.view.frame.size.width;
     CGRect fbLoginFrame = CGRectMake(loginVIewXPos, loginViewYPos, loginViewWidth, submitButtonHeight);
     loginView.frame = fbLoginFrame;
+    loginView.delegate = self;
     [self.view addSubview:loginView];
     
     //build the go back button
@@ -93,9 +98,37 @@
     @catch (NSException *exception) {
         NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);
     }
+}
+
+- (void)loginToMainApp {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    
-    //[self dismissViewControllerAnimated:YES completion:nil];
+    @try {
+        OPMapVC *anOPMapVC = [storyboard instantiateViewControllerWithIdentifier:@"OPMapVC"];
+        anOPMapVC.modalPresentationStyle = UIModalPresentationFullScreen;
+        anOPMapVC.transitioningDelegate = self;
+        [self presentViewController:anOPMapVC animated:YES completion:nil];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);
+    }
+}
+
+-(void) checkFacebookStatus
+{
+    if (FBSession.activeSession.isOpen)
+    {
+        [self loginToMainApp];
+        NSLog(@"Session is active");
+    } else {
+        NSLog(@"Session is not active");
+    }
+}
+
+-(void) loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user
+{
+    [self loginToMainApp];
+    NSLog(@"User logs in");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,15 +140,5 @@
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     return [[OPTransition alloc] initWithType:NO];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
