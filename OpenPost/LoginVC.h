@@ -10,5 +10,6 @@
 
 @interface LoginVC : UIViewController
 
+- (void)loginToMainApp;
 
 @end
