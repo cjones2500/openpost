@@ -9,6 +9,9 @@
 #import "OPMapVC.h"
 #import "OPTransition.h"
 
+static NSString* const kBaseURL = @"http://localhost:5000/";
+static NSString* const kLocations = @"items";
+//static NSString* const kFiles = @"files";
 
 @interface OPMapVC () <UIViewControllerTransitioningDelegate>
 
@@ -22,11 +25,34 @@
     
     UITapGestureRecognizer * tapToClose = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
     [self.view addGestureRecognizer:tapToClose];
+    
+    [self import];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)import
+{
+    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kLocations]]; //1
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"GET"; //2
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"]; //3
+    
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration]; //4
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
+        if (error == nil) {
+            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
+            NSLog(@"responseArray: %@",responseArray[1]);
+        }
+    }];
+    
+    [dataTask resume]; //8
 }
 
 - (void)close {
