@@ -10,6 +10,8 @@
 		EB0DB98DD01304EA2D1601FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5214D595456C16793A7FB3F /* libPods.a */; };
 		F90C569B1A5D7A8C0086B71A /* mapshot.png in Resources */ = {isa = PBXBuildFile; fileRef = F90C569A1A5D7A8C0086B71A /* mapshot.png */; };
 		F90C569E1A5D7DFD0086B71A /* OPButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = F90C569D1A5D7DFD0086B71A /* OPButtonView.m */; };
+		F933D1351A688B6400DA3D52 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1341A688B6400DA3D52 /* Location.m */; };
+		F933D1381A688C1B00DA3D52 /* Locations.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1371A688C1B00DA3D52 /* Locations.m */; };
 		F934E5FA1A646C2C006EBA6D /* op.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F81A646C2C006EBA6D /* op.png */; };
 		F934E5FB1A646C2C006EBA6D /* openPost.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F91A646C2C006EBA6D /* openPost.png */; };
 		F934E5FE1A6472A3006EBA6D /* OPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F934E5FD1A6472A3006EBA6D /* OPTextField.m */; };
@@ -52,6 +54,10 @@
 		F90C569A1A5D7A8C0086B71A /* mapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapshot.png; sourceTree = SOURCE_ROOT; };
 		F90C569C1A5D7DFD0086B71A /* OPButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPButtonView.h; path = ../OPButtonView.h; sourceTree = "<group>"; };
 		F90C569D1A5D7DFD0086B71A /* OPButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPButtonView.m; path = ../OPButtonView.m; sourceTree = "<group>"; };
+		F933D1331A688B6400DA3D52 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		F933D1341A688B6400DA3D52 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		F933D1361A688C1B00DA3D52 /* Locations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Locations.h; sourceTree = "<group>"; };
+		F933D1371A688C1B00DA3D52 /* Locations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Locations.m; sourceTree = "<group>"; };
 		F934E5F81A646C2C006EBA6D /* op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = op.png; sourceTree = SOURCE_ROOT; };
 		F934E5F91A646C2C006EBA6D /* openPost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openPost.png; sourceTree = SOURCE_ROOT; };
 		F934E5FC1A6472A3006EBA6D /* OPTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPTextField.h; path = ../OPTextField.h; sourceTree = "<group>"; };
@@ -130,6 +136,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F933D1321A688B3600DA3D52 /* MapVC */ = {
+			isa = PBXGroup;
+			children = (
+				F934E5FF1A647D60006EBA6D /* OPMapVC.h */,
+				F934E6001A647D60006EBA6D /* OPMapVC.m */,
+				F933D1331A688B6400DA3D52 /* Location.h */,
+				F933D1341A688B6400DA3D52 /* Location.m */,
+				F933D1361A688C1B00DA3D52 /* Locations.h */,
+				F933D1371A688C1B00DA3D52 /* Locations.m */,
+			);
+			name = MapVC;
+			sourceTree = "<group>";
+		};
 		F97170891A55EC6B0023AED9 = {
 			isa = PBXGroup;
 			children = (
@@ -153,10 +172,9 @@
 		F97170941A55EC6B0023AED9 /* OpenPost */ = {
 			isa = PBXGroup;
 			children = (
+				F933D1321A688B3600DA3D52 /* MapVC */,
 				F97170991A55EC6B0023AED9 /* AppDelegate.h */,
 				F971709A1A55EC6B0023AED9 /* AppDelegate.m */,
-				F934E5FF1A647D60006EBA6D /* OPMapVC.h */,
-				F934E6001A647D60006EBA6D /* OPMapVC.m */,
 				F9C0607E1A5EA39700688883 /* SignUpVC.h */,
 				F9C0607F1A5EA39700688883 /* SignUpVC.m */,
 				F97170C11A5620D60023AED9 /* LoginVC.h */,
@@ -368,6 +386,7 @@
 				F97170CA1A58439C0023AED9 /* OPScrollView.m in Sources */,
 				F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */,
 				F9C0607D1A5D8F5A00688883 /* OPButton.m in Sources */,
+				F933D1381A688C1B00DA3D52 /* Locations.m in Sources */,
 				F97170C01A5608190023AED9 /* OPTransition.m in Sources */,
 				F97170981A55EC6B0023AED9 /* main.m in Sources */,
 				F9EEB4881A59665000432F6D /* OPInfoView.m in Sources */,
@@ -377,6 +396,7 @@
 				F97170A11A55EC6B0023AED9 /* ViewController.m in Sources */,
 				F9806F331A5EB255009FEE60 /* OPLogo.m in Sources */,
 				F971709E1A55EC6B0023AED9 /* OpenPost.xcdatamodeld in Sources */,
+				F933D1351A688B6400DA3D52 /* Location.m in Sources */,
 				F95EADD01A5CB2F800A2F1C8 /* CustomScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
