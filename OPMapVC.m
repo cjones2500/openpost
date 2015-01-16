@@ -47,9 +47,7 @@ static NSString* const kLocations = @"items";
     
     UITapGestureRecognizer * tapToClose = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
     [self.view addGestureRecognizer:tapToClose];
-    
-    [self import];
-    [self sendDataWithString:@"testing"];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,6 +110,10 @@ static NSString* const kLocations = @"items";
 
 
 - (void)close {
+    //perform on closing
+    [self import];
+    [self sendDataWithString:@"testing"];
+    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     @try {
