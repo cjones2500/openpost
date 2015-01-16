@@ -141,12 +141,20 @@
 			children = (
 				F934E5FF1A647D60006EBA6D /* OPMapVC.h */,
 				F934E6001A647D60006EBA6D /* OPMapVC.m */,
+				F933D1391A68909200DA3D52 /* Reference */,
+			);
+			name = MapVC;
+			sourceTree = "<group>";
+		};
+		F933D1391A68909200DA3D52 /* Reference */ = {
+			isa = PBXGroup;
+			children = (
 				F933D1331A688B6400DA3D52 /* Location.h */,
 				F933D1341A688B6400DA3D52 /* Location.m */,
 				F933D1361A688C1B00DA3D52 /* Locations.h */,
 				F933D1371A688C1B00DA3D52 /* Locations.m */,
 			);
-			name = MapVC;
+			name = Reference;
 			sourceTree = "<group>";
 		};
 		F97170891A55EC6B0023AED9 = {
