@@ -8,7 +8,11 @@
 
 #import "OPMapVC.h"
 #import "OPTransition.h"
-#import "Location.h"
+#import "OPButton.h"
+#import "OPInfoView.h"
+#import "UserProfileView.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 #define safeSet(d,k,v) if (v) d[k] = v;
 
@@ -35,19 +39,169 @@ static NSString* const kLocations = @"items";
     such that people cannot force code to read the database
 */
  
-@interface OPMapVC () <UIViewControllerTransitioningDelegate>
+@interface OPMapVC () <UIViewControllerTransitioningDelegate,FBLoginViewDelegate>
 
 @end
 
 @implementation OPMapVC
 
+UserProfileView * profileView;
+BOOL isFacebookSessionActive;
+NSDictionary<FBGraphUser> *userInfo;
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UITapGestureRecognizer * tapToClose = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(close)];
-    [self.view addGestureRecognizer:tapToClose];
+    //add the MapView to the controller
+    MKMapView * theMapView = [[MKMapView alloc] initWithFrame:self.view.frame];
+    theMapView.delegate = self;
+    [self.view addSubview:theMapView];
+    
+    
+    //create the banner along the top
+    float bannerWidth = 1.0*self.view.frame.size.width;
+    float bannerXPosition = 0.0;//0.2*0.7*self.view.frame.size.width;
+    float bannerHeight = 0.1*self.view.frame.size.height;
+    float bannerYPosition = 0.0;
+    CGRect bannerFrame = CGRectMake(bannerXPosition,
+                                    bannerYPosition,
+                                    bannerWidth,
+                                    bannerHeight);
+    
+    OPButton* banner = [[OPButton alloc] initWithFrame:bannerFrame withTitle:@"Profile"];
+    [self.view addSubview:banner];
+    
+    //create the user button
+    float userButtonLength = 0.09*self.view.frame.size.width;
+    float userButtonXPosition = 0.05*self.view.frame.size.width;
+    float userButtonYPosition = 0.035*self.view.frame.size.height;
+    CGRect userButtonFrame = CGRectMake(userButtonXPosition,
+                                    userButtonYPosition,
+                                    userButtonLength,
+                                    userButtonLength);
+    
+    self.userButton = [[OPInfoView alloc] initWithFrame:userButtonFrame];
+    [self.userButton initOPInfoViewWithImage:@"user_icon.png"];
+    [self.userButton setUserInteractionEnabled:YES];
+    //add user button response to profile view
+    UITapGestureRecognizer * tapToSeeProfile = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openProfile)];
+    [self.userButton addGestureRecognizer:tapToSeeProfile];
+    [self.view addSubview:self.userButton];
+    
+    //build the logout button
+    float logOutButtonWidth = 0.2*self.view.frame.size.width;
+    float logOutButtonXPosition = self.view.frame.size.width - logOutButtonWidth;
+    float logOutButtonHeight = 0.05*self.view.frame.size.height;
+    float logOutButtonYPosition = 0.035*self.view.frame.size.height;//0.7*self.view.frame.size.height - submitButtonHeight;
+    CGRect logOutButtonFrame = CGRectMake(logOutButtonXPosition, logOutButtonYPosition, logOutButtonWidth, logOutButtonHeight);
+    OPButton* logOutButton = [[OPButton alloc] initWithFrame:logOutButtonFrame withTitle:@"Log Out"];
+    [logOutButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0]];
+    [logOutButton addTarget:self.userButton action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:logOutButton];
+    
+}
 
+-(void) test{
+    NSString *facebookId = userInfo.objectID;
+    NSLog(@"In dispatch facebookId : %@",facebookId);
+    NSString *imageUrlString = [[NSString alloc] initWithFormat: @"http://graph.facebook.com/%@/picture?type=large", facebookId];
+    NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
+    NSData *data = [NSData dataWithContentsOfURL:imageUrl];
+    UIImage *fbProfileImg = [UIImage imageWithData:data];
+    NSLog(@"UIImage outside %@",fbProfileImg);
+    [self.userButton setImage:fbProfileImg];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self loadFacebookInformation];
+}
+
+-(void)loadFacebookInformation
+{
+    if (FBSession.activeSession.isOpen) {
+        
+        dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+        dispatch_sync(myQueue, ^{
+        
+        NSLog(@"started in sync custom queue");
+        
+        [[FBRequest requestForMe] startWithCompletionHandler:
+         ^(FBRequestConnection *connection,
+           NSDictionary<FBGraphUser> *user,
+           NSError *error) {
+             if (!error) {
+                 
+                 //Load the user information from Facebook
+                 userInfo = user;
+                 [profileView setUserInfo:user];
+                 
+                 NSLog(@"Loaded information for user.id %@",user.objectID);
+                 
+                 //TODO: Cache user information onto the phone
+                 
+                 dispatch_sync(myQueue, ^{
+                     NSString *facebookId = userInfo.objectID;
+                     NSLog(@"In dispatch facebookId : %@",facebookId);
+                     NSString *imageUrlString = [[NSString alloc] initWithFormat: @"http://graph.facebook.com/%@/picture?type=large", facebookId];
+                     NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
+                     NSData *data = [NSData dataWithContentsOfURL:imageUrl];
+                     UIImage *fbProfileImg = [UIImage imageWithData:data];
+                     NSLog(@"UIImage outside %@",fbProfileImg);
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                      // Update the UI
+                         [self.userButton setImage:fbProfileImg];
+                         [self writeProfileImageToFile:fbProfileImg];
+                     });
+                     
+                     
+                 });
+                 
+             }
+             else{
+                 NSLog(@"Error downloading Facebook information: %@",error);
+             }
+         }];
+        
+            NSLog(@"finished in sync custom queue");
+            
+        });
+    
+    }
+}
+
+-(void) writeProfileImageToFile:(UIImage*)anImage
+{
+    NSData *pngData = UIImagePNGRepresentation(anImage);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+    NSString *filePath = [documentsPath stringByAppendingPathComponent:@"profile.png"]; //Add the file name
+    [pngData writeToFile:filePath atomically:YES]; //Write the file
+    
+}
+
+
+-(void) openProfile{
+    NSLog(@"in here");
+    //add the profile View
+    profileView = [[UserProfileView alloc] initWithFrame:self.view.frame];
+    profileView.alpha = 0.0; //make the view transparent
+    [self.view addSubview:profileView];
+    [self.view bringSubviewToFront:profileView];
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveEaseIn
+                     animations:^{
+                         profileView.alpha = 1.0;
+                     }
+                     completion:^(BOOL finished){
+                         //do nothing
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,7 +266,7 @@ static NSString* const kLocations = @"items";
 - (void)close {
     //perform on closing
     [self import];
-    [self sendDataWithString:@"testing"];
+    //[self sendDataWithString:@"testing"];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
@@ -125,6 +279,30 @@ static NSString* const kLocations = @"items";
     @catch (NSException *exception) {
         NSLog(@"Error thrown attempting to initialise second view: %@\n",exception);
     }
+}
+
+-(void) checkFacebookStatus
+{
+    if (FBSession.activeSession.isOpen)
+    {
+        isFacebookSessionActive = YES;
+        NSLog(@"OPMapVC::Session is active");
+    } else {
+        isFacebookSessionActive = NO;
+        NSLog(@"OPMapVC::Session is not active");
+    }
+}
+
+//logs out of OpenPost
+-(void) logout{
+    if (FBSession.activeSession.isOpen) {
+        [FBSession.activeSession close];
+        [FBSession.activeSession  closeAndClearTokenInformation];
+        FBSession.activeSession=nil;
+    }
+    //TODO: Close the session if it is an OP session as well
+    [self close];
+    
 }
 
 #pragma mark - Transition Delegate Required Method

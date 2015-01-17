@@ -12,6 +12,9 @@
 		F90C569E1A5D7DFD0086B71A /* OPButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = F90C569D1A5D7DFD0086B71A /* OPButtonView.m */; };
 		F933D1351A688B6400DA3D52 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1341A688B6400DA3D52 /* Location.m */; };
 		F933D1381A688C1B00DA3D52 /* Locations.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1371A688C1B00DA3D52 /* Locations.m */; };
+		F933D13B1A6ABEE800DA3D52 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F933D13A1A6ABEE800DA3D52 /* MapKit.framework */; };
+		F933D1411A6AC39D00DA3D52 /* user_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F933D1401A6AC39D00DA3D52 /* user_icon.png */; };
+		F933D1471A6ACA3B00DA3D52 /* UserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1461A6ACA3B00DA3D52 /* UserProfileView.m */; };
 		F934E5FA1A646C2C006EBA6D /* op.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F81A646C2C006EBA6D /* op.png */; };
 		F934E5FB1A646C2C006EBA6D /* openPost.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F91A646C2C006EBA6D /* openPost.png */; };
 		F934E5FE1A6472A3006EBA6D /* OPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F934E5FD1A6472A3006EBA6D /* OPTextField.m */; };
@@ -52,20 +55,24 @@
 		E11D9D1E56910D8A828E445D /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F5214D595456C16793A7FB3F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		F90C569A1A5D7A8C0086B71A /* mapshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapshot.png; sourceTree = SOURCE_ROOT; };
-		F90C569C1A5D7DFD0086B71A /* OPButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPButtonView.h; path = ../OPButtonView.h; sourceTree = "<group>"; };
-		F90C569D1A5D7DFD0086B71A /* OPButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPButtonView.m; path = ../OPButtonView.m; sourceTree = "<group>"; };
+		F90C569C1A5D7DFD0086B71A /* OPButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPButtonView.h; sourceTree = "<group>"; };
+		F90C569D1A5D7DFD0086B71A /* OPButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPButtonView.m; sourceTree = "<group>"; };
 		F933D1331A688B6400DA3D52 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		F933D1341A688B6400DA3D52 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		F933D1361A688C1B00DA3D52 /* Locations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Locations.h; sourceTree = "<group>"; };
 		F933D1371A688C1B00DA3D52 /* Locations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Locations.m; sourceTree = "<group>"; };
+		F933D13A1A6ABEE800DA3D52 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F933D1401A6AC39D00DA3D52 /* user_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_icon.png; sourceTree = SOURCE_ROOT; };
+		F933D1451A6ACA3B00DA3D52 /* UserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileView.h; sourceTree = "<group>"; };
+		F933D1461A6ACA3B00DA3D52 /* UserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileView.m; sourceTree = "<group>"; };
 		F934E5F81A646C2C006EBA6D /* op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = op.png; sourceTree = SOURCE_ROOT; };
 		F934E5F91A646C2C006EBA6D /* openPost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openPost.png; sourceTree = SOURCE_ROOT; };
-		F934E5FC1A6472A3006EBA6D /* OPTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPTextField.h; path = ../OPTextField.h; sourceTree = "<group>"; };
-		F934E5FD1A6472A3006EBA6D /* OPTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPTextField.m; path = ../OPTextField.m; sourceTree = "<group>"; };
+		F934E5FC1A6472A3006EBA6D /* OPTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTextField.h; sourceTree = "<group>"; };
+		F934E5FD1A6472A3006EBA6D /* OPTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPTextField.m; sourceTree = "<group>"; };
 		F934E5FF1A647D60006EBA6D /* OPMapVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPMapVC.h; path = ../OPMapVC.h; sourceTree = "<group>"; };
 		F934E6001A647D60006EBA6D /* OPMapVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPMapVC.m; path = ../OPMapVC.m; sourceTree = "<group>"; };
-		F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomScrollView.h; path = ../CustomScrollView.h; sourceTree = "<group>"; };
-		F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomScrollView.m; path = ../CustomScrollView.m; sourceTree = "<group>"; };
+		F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomScrollView.h; sourceTree = "<group>"; };
+		F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomScrollView.m; sourceTree = "<group>"; };
 		F97170921A55EC6B0023AED9 /* OpenPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97170961A55EC6B0023AED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F97170971A55EC6B0023AED9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -80,24 +87,24 @@
 		F97170AE1A55EC6B0023AED9 /* OpenPostTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenPostTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F97170B31A55EC6B0023AED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F97170B41A55EC6B0023AED9 /* OpenPostTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenPostTests.m; sourceTree = "<group>"; };
-		F97170BE1A5608190023AED9 /* OPTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTransition.h; sourceTree = "<group>"; };
-		F97170BF1A5608190023AED9 /* OPTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPTransition.m; sourceTree = "<group>"; };
+		F97170BE1A5608190023AED9 /* OPTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPTransition.h; path = OpenPost/OPTransition.h; sourceTree = "<group>"; };
+		F97170BF1A5608190023AED9 /* OPTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPTransition.m; path = OpenPost/OPTransition.m; sourceTree = "<group>"; };
 		F97170C11A5620D60023AED9 /* LoginVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginVC.h; sourceTree = "<group>"; };
 		F97170C21A5620D60023AED9 /* LoginVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginVC.m; sourceTree = "<group>"; };
-		F97170C61A5774540023AED9 /* barca.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barca.jpg; sourceTree = "<group>"; };
-		F97170C81A58439C0023AED9 /* OPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPScrollView.h; sourceTree = "<group>"; };
-		F97170C91A58439C0023AED9 /* OPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPScrollView.m; sourceTree = "<group>"; };
-		F9806F311A5EB255009FEE60 /* OPLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPLogo.h; path = ../OPLogo.h; sourceTree = "<group>"; };
-		F9806F321A5EB255009FEE60 /* OPLogo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPLogo.m; path = ../OPLogo.m; sourceTree = "<group>"; };
-		F9C0607B1A5D8F5A00688883 /* OPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPButton.h; path = ../OPButton.h; sourceTree = "<group>"; };
-		F9C0607C1A5D8F5A00688883 /* OPButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPButton.m; path = ../OPButton.m; sourceTree = "<group>"; };
+		F97170C61A5774540023AED9 /* barca.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = barca.jpg; path = OpenPost/barca.jpg; sourceTree = "<group>"; };
+		F97170C81A58439C0023AED9 /* OPScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPScrollView.h; path = OpenPost/OPScrollView.h; sourceTree = "<group>"; };
+		F97170C91A58439C0023AED9 /* OPScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPScrollView.m; path = OpenPost/OPScrollView.m; sourceTree = "<group>"; };
+		F9806F311A5EB255009FEE60 /* OPLogo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPLogo.h; sourceTree = "<group>"; };
+		F9806F321A5EB255009FEE60 /* OPLogo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPLogo.m; sourceTree = "<group>"; };
+		F9C0607B1A5D8F5A00688883 /* OPButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPButton.h; sourceTree = "<group>"; };
+		F9C0607C1A5D8F5A00688883 /* OPButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPButton.m; sourceTree = "<group>"; };
 		F9C0607E1A5EA39700688883 /* SignUpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignUpVC.h; path = ../SignUpVC.h; sourceTree = "<group>"; };
 		F9C0607F1A5EA39700688883 /* SignUpVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignUpVC.m; path = ../SignUpVC.m; sourceTree = "<group>"; };
-		F9C8984D1A5D4C86001E71BB /* OPTextInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPTextInfoView.h; path = ../OPTextInfoView.h; sourceTree = "<group>"; };
-		F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPTextInfoView.m; path = ../OPTextInfoView.m; sourceTree = "<group>"; };
-		F9EEB4861A59665000432F6D /* OPInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPInfoView.h; sourceTree = "<group>"; };
-		F9EEB4871A59665000432F6D /* OPInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPInfoView.m; sourceTree = "<group>"; };
-		F9EEB48B1A5C29BA00432F6D /* barca2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = barca2.jpg; sourceTree = "<group>"; };
+		F9C8984D1A5D4C86001E71BB /* OPTextInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTextInfoView.h; sourceTree = "<group>"; };
+		F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPTextInfoView.m; sourceTree = "<group>"; };
+		F9EEB4861A59665000432F6D /* OPInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OPInfoView.h; path = OpenPost/OPInfoView.h; sourceTree = "<group>"; };
+		F9EEB4871A59665000432F6D /* OPInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OPInfoView.m; path = OpenPost/OPInfoView.m; sourceTree = "<group>"; };
+		F9EEB48B1A5C29BA00432F6D /* barca2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = barca2.jpg; path = OpenPost/barca2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F933D13B1A6ABEE800DA3D52 /* MapKit.framework in Frameworks */,
 				EB0DB98DD01304EA2D1601FD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +139,7 @@
 		DF3395E6D04325C5FF0A8208 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F933D13A1A6ABEE800DA3D52 /* MapKit.framework */,
 				F5214D595456C16793A7FB3F /* libPods.a */,
 			);
 			name = Frameworks;
@@ -141,6 +150,8 @@
 			children = (
 				F934E5FF1A647D60006EBA6D /* OPMapVC.h */,
 				F934E6001A647D60006EBA6D /* OPMapVC.m */,
+				F933D1451A6ACA3B00DA3D52 /* UserProfileView.h */,
+				F933D1461A6ACA3B00DA3D52 /* UserProfileView.m */,
 				F933D1391A68909200DA3D52 /* Reference */,
 			);
 			name = MapVC;
@@ -157,9 +168,49 @@
 			name = Reference;
 			sourceTree = "<group>";
 		};
+		F933D1481A6AD63A00DA3D52 /* Supporting Images */ = {
+			isa = PBXGroup;
+			children = (
+				F9EEB48B1A5C29BA00432F6D /* barca2.jpg */,
+				F933D1401A6AC39D00DA3D52 /* user_icon.png */,
+				F97170C61A5774540023AED9 /* barca.jpg */,
+				F90C569A1A5D7A8C0086B71A /* mapshot.png */,
+				F934E5F81A646C2C006EBA6D /* op.png */,
+				F934E5F91A646C2C006EBA6D /* openPost.png */,
+			);
+			name = "Supporting Images";
+			sourceTree = "<group>";
+		};
+		F933D1491A6AD66600DA3D52 /* OPClasses */ = {
+			isa = PBXGroup;
+			children = (
+				F97170BE1A5608190023AED9 /* OPTransition.h */,
+				F97170BF1A5608190023AED9 /* OPTransition.m */,
+				F97170C81A58439C0023AED9 /* OPScrollView.h */,
+				F97170C91A58439C0023AED9 /* OPScrollView.m */,
+				F9EEB4861A59665000432F6D /* OPInfoView.h */,
+				F9EEB4871A59665000432F6D /* OPInfoView.m */,
+				F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */,
+				F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */,
+				F9C8984D1A5D4C86001E71BB /* OPTextInfoView.h */,
+				F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */,
+				F90C569C1A5D7DFD0086B71A /* OPButtonView.h */,
+				F90C569D1A5D7DFD0086B71A /* OPButtonView.m */,
+				F9C0607B1A5D8F5A00688883 /* OPButton.h */,
+				F9C0607C1A5D8F5A00688883 /* OPButton.m */,
+				F9806F311A5EB255009FEE60 /* OPLogo.h */,
+				F9806F321A5EB255009FEE60 /* OPLogo.m */,
+				F934E5FC1A6472A3006EBA6D /* OPTextField.h */,
+				F934E5FD1A6472A3006EBA6D /* OPTextField.m */,
+			);
+			name = OPClasses;
+			sourceTree = "<group>";
+		};
 		F97170891A55EC6B0023AED9 = {
 			isa = PBXGroup;
 			children = (
+				F933D1491A6AD66600DA3D52 /* OPClasses */,
+				F933D1481A6AD63A00DA3D52 /* Supporting Images */,
 				F97170941A55EC6B0023AED9 /* OpenPost */,
 				F97170B11A55EC6B0023AED9 /* OpenPostTests */,
 				F97170931A55EC6B0023AED9 /* Products */,
@@ -189,34 +240,11 @@
 				F97170C21A5620D60023AED9 /* LoginVC.m */,
 				F971709F1A55EC6B0023AED9 /* ViewController.h */,
 				F97170A01A55EC6B0023AED9 /* ViewController.m */,
-				F9EEB48B1A5C29BA00432F6D /* barca2.jpg */,
-				F97170C61A5774540023AED9 /* barca.jpg */,
-				F90C569A1A5D7A8C0086B71A /* mapshot.png */,
-				F934E5F81A646C2C006EBA6D /* op.png */,
-				F934E5F91A646C2C006EBA6D /* openPost.png */,
 				F97170A21A55EC6B0023AED9 /* Main.storyboard */,
 				F97170A51A55EC6B0023AED9 /* Images.xcassets */,
 				F97170A71A55EC6B0023AED9 /* LaunchScreen.xib */,
 				F971709C1A55EC6B0023AED9 /* OpenPost.xcdatamodeld */,
 				F97170951A55EC6B0023AED9 /* Supporting Files */,
-				F97170BE1A5608190023AED9 /* OPTransition.h */,
-				F97170BF1A5608190023AED9 /* OPTransition.m */,
-				F97170C81A58439C0023AED9 /* OPScrollView.h */,
-				F97170C91A58439C0023AED9 /* OPScrollView.m */,
-				F9EEB4861A59665000432F6D /* OPInfoView.h */,
-				F9EEB4871A59665000432F6D /* OPInfoView.m */,
-				F95EADCE1A5CB2F800A2F1C8 /* CustomScrollView.h */,
-				F95EADCF1A5CB2F800A2F1C8 /* CustomScrollView.m */,
-				F9C8984D1A5D4C86001E71BB /* OPTextInfoView.h */,
-				F9C8984E1A5D4C86001E71BB /* OPTextInfoView.m */,
-				F90C569C1A5D7DFD0086B71A /* OPButtonView.h */,
-				F90C569D1A5D7DFD0086B71A /* OPButtonView.m */,
-				F9C0607B1A5D8F5A00688883 /* OPButton.h */,
-				F9C0607C1A5D8F5A00688883 /* OPButton.m */,
-				F9806F311A5EB255009FEE60 /* OPLogo.h */,
-				F9806F321A5EB255009FEE60 /* OPLogo.m */,
-				F934E5FC1A6472A3006EBA6D /* OPTextField.h */,
-				F934E5FD1A6472A3006EBA6D /* OPTextField.m */,
 			);
 			path = OpenPost;
 			sourceTree = "<group>";
@@ -330,6 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F933D1411A6AC39D00DA3D52 /* user_icon.png in Resources */,
 				F90C569B1A5D7A8C0086B71A /* mapshot.png in Resources */,
 				F97170A41A55EC6B0023AED9 /* Main.storyboard in Resources */,
 				F97170C71A5774540023AED9 /* barca.jpg in Resources */,
@@ -392,6 +421,7 @@
 				F97170C31A5620D60023AED9 /* LoginVC.m in Sources */,
 				F934E5FE1A6472A3006EBA6D /* OPTextField.m in Sources */,
 				F97170CA1A58439C0023AED9 /* OPScrollView.m in Sources */,
+				F933D1471A6ACA3B00DA3D52 /* UserProfileView.m in Sources */,
 				F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */,
 				F9C0607D1A5D8F5A00688883 /* OPButton.m in Sources */,
 				F933D1381A688C1B00DA3D52 /* Locations.m in Sources */,

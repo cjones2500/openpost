@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+
     //check the current Facebook status
     [self checkFacebookStatus];
     
@@ -130,6 +130,7 @@
     [self loginToMainApp];
     NSLog(@"User logs in");
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

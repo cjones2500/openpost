@@ -19,6 +19,7 @@
 
 - (id)initWithYCoord:(CGFloat)yCoord withSuperView:(UIView*)aSuperView withAnImageNamed:(NSString*)anImage;
 - (id)initWithXCoord:(CGFloat)xCoord withYCoord:(CGFloat)yCoord withSuperView:(UIView*)aSuperView withAnImageNamed:(NSString*)anImage;
+- (id)initWithYCoord:(CGFloat)yCoord withSuperView:(UIView*)aSuperView withAnImage:(UIImage*)anImage;
 - (id)initWithXCoord:(CGFloat)xCoord withYCoord:(CGFloat)yCoord withWidth:(float)aWidth withHeight:(float)aHeight withSuperView:(UIView*)aSuperView withAnImageNamed:(NSString*)anImage;
 - (void)initOPInfoViewWithImage:(NSString*)anImage;
 
