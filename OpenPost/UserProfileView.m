@@ -54,6 +54,10 @@
     [backButton addTarget:self action:@selector(goBackAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:backButton];
     
+    
+    //read dictionary information
+    NSDictionary* testDic = [self readProfileDictionaryData];
+    NSLog(@"testDic: print %@",testDic);
 
     //create the profile picture view
     float profileViewYPos = 0.5*self.frame.size.height - 200.0;
@@ -90,6 +94,22 @@
     }
     @catch (NSException *exception) {
         NSLog(@"Error reading profile image: %@",exception);
+        return nil;
+    }
+}
+
+-(NSDictionary*) readProfileDictionaryData
+{
+    @try {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsPath = [paths objectAtIndex:0]; //Get the docs directory
+        NSString *dictPath = [documentsPath stringByAppendingPathComponent:@"profileDic.out"]; //Add the file name
+        NSDictionary *dictFromFile = [NSDictionary dictionaryWithContentsOfFile:dictPath];
+        return dictFromFile;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error reading profile image: %@",exception);
+        return nil;
     }
 }
 

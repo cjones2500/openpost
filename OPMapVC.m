@@ -99,7 +99,7 @@ NSDictionary<FBGraphUser> *userInfo;
     CGRect logOutButtonFrame = CGRectMake(logOutButtonXPosition, logOutButtonYPosition, logOutButtonWidth, logOutButtonHeight);
     OPButton* logOutButton = [[OPButton alloc] initWithFrame:logOutButtonFrame withTitle:@"Log Out"];
     [logOutButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0]];
-    [logOutButton addTarget:self.userButton action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    [logOutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:logOutButton];
     
 }
@@ -153,12 +153,12 @@ NSDictionary<FBGraphUser> *userInfo;
                      NSLog(@"UIImage outside %@",fbProfileImg);
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
-                      // Update the UI
+                         // Update the UI
                          [self.userButton setImage:fbProfileImg];
                          [self writeProfileImageToFile:fbProfileImg];
+                         NSDictionary * profileDataToWrite = [userInfo copy];
+                         [self writeProfileDataToFile:profileDataToWrite];
                      });
-                     
-                     
                  });
                  
              }
@@ -182,6 +182,13 @@ NSDictionary<FBGraphUser> *userInfo;
     NSString *filePath = [documentsPath stringByAppendingPathComponent:@"profile.png"]; //Add the file name
     [pngData writeToFile:filePath atomically:YES]; //Write the file
     
+}
+
+-(void) writeProfileDataToFile:(NSDictionary*)aDictionary
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *dictPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"profileDic.out"];
+    [aDictionary writeToFile:dictPath atomically:YES]; //write the dictionary to file
 }
 
 
