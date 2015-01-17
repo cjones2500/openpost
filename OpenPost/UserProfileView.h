@@ -15,6 +15,6 @@
 - (id) initWithFrame:(CGRect)aFrame;
 - (void)initialiseView;
 
-@property (weak,nonatomic) NSDictionary<FBGraphUser>* userInfo;
+@property (weak,nonatomic) NSDictionary* userProfileInfo;
 
 @end

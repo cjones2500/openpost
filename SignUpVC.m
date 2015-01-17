@@ -57,6 +57,7 @@
     float submitButtonYPosition = 0.0;
     CGRect submitButtonFrame = CGRectMake(submitButtonXPosition, submitButtonYPosition, submitButtonWidth, submitButtonHeight);
     OPButton* proceedButton = [[OPButton alloc] initWithFrame:submitButtonFrame withTitle:@"Sign Up"];
+    proceedButton.layer.cornerRadius = 0.0;
     [self.view addSubview:proceedButton];
     
     //build the go back button

@@ -11,5 +11,6 @@
 @interface OPTextField : UITextField
 
 -(id)initWithFrame:(CGRect)frame withTitle:(NSString*)aTitle isSecure:(BOOL)isSecure;
+-(id)initForUserProfileWithFrame:(CGRect)frame withTitle:(NSString*)aTitle isSecure:(BOOL)isSecure;
 
 @end

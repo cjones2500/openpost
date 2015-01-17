@@ -72,6 +72,7 @@ NSDictionary<FBGraphUser> *userInfo;
                                     bannerHeight);
     
     OPButton* banner = [[OPButton alloc] initWithFrame:bannerFrame withTitle:@"Profile"];
+    banner.layer.cornerRadius = 0.0;
     [self.view addSubview:banner];
     
     //create the user button
@@ -137,13 +138,10 @@ NSDictionary<FBGraphUser> *userInfo;
                  
                  //Load the user information from Facebook
                  userInfo = user;
-                 [profileView setUserInfo:user];
+                 [profileView setUserProfileInfo:user];
                  
                  NSLog(@"Loaded information for user.id %@",user.objectID);
-                 
-                 //TODO: Cache user information onto the phone
-                 
-                 dispatch_sync(myQueue, ^{
+                 dispatch_async(myQueue, ^{
                      NSString *facebookId = userInfo.objectID;
                      NSLog(@"In dispatch facebookId : %@",facebookId);
                      NSString *imageUrlString = [[NSString alloc] initWithFormat: @"http://graph.facebook.com/%@/picture?type=large", facebookId];

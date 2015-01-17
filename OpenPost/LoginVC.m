@@ -33,6 +33,7 @@
     float submitButtonYPosition = 0.0;
     CGRect submitButtonFrame = CGRectMake(submitButtonXPosition, submitButtonYPosition, submitButtonWidth, submitButtonHeight);
     OPButton* proceedButton = [[OPButton alloc] initWithFrame:submitButtonFrame withTitle:@"Login"];
+    proceedButton.layer.cornerRadius = 0.0;
     [self.view addSubview:proceedButton];
     
     

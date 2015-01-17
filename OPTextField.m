@@ -38,4 +38,30 @@
     return self;
 }
 
+-(id)initForUserProfileWithFrame:(CGRect)frame withTitle:(NSString*)aTitle isSecure:(BOOL)isSecure
+{
+    self = [super initWithFrame:frame];
+    if (self == nil) {
+        return nil;
+    }
+    //specifications for a UITextField
+    self.backgroundColor = [UIColor clearColor];
+    self.layer.cornerRadius = self.frame.size.width/90.0;
+    self.layer.masksToBounds = YES;
+    UILabel *textAtBeginning = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width, self.frame.size.height)];
+    [textAtBeginning setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0]];
+    [textAtBeginning setText:[NSString stringWithFormat:@"%@",aTitle]];
+    [textAtBeginning setTextColor:[UIColor blackColor]];
+    [textAtBeginning setTextAlignment:NSTextAlignmentCenter];
+    self.leftView = textAtBeginning;
+    self.leftViewMode = UITextFieldViewModeAlways;
+    
+    [self setSecureTextEntry:isSecure];
+    
+    [self setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0]];
+    self.textAlignment = NSTextAlignmentLeft;
+    
+    return self;
+}
+
 @end

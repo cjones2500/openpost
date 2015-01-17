@@ -8,10 +8,11 @@
 
 #import "UserProfileView.h"
 #import "OPButton.h"
+#import "OPTextField.h"
 
 @implementation UserProfileView
 
-@synthesize userInfo;
+@synthesize userProfileInfo;
 
 - (id) initWithFrame:(CGRect)aFrame{
     
@@ -30,6 +31,10 @@
     //check the view is visible from previous close methods
     self.backgroundColor = [UIColor whiteColor];
     
+    //read dictionary information
+    [self setUserProfileInfo:[self readProfileDictionaryData]];
+    
+    
     //create the banner along the top
     float bannerWidth = 1.0*self.frame.size.width;
     float bannerXPosition = 0.0;//0.2*0.7*self.view.frame.size.width;
@@ -41,23 +46,19 @@
                                 bannerHeight);
 
     OPButton* banner = [[OPButton alloc] initWithFrame:bannerFrame withTitle:@"Open Post"];
+    banner.layer.cornerRadius = 0.0;
     [self addSubview:banner];
     
     //build the go back button
     float backButtonWidth = 0.2*self.frame.size.width;
-    float backButtonXPosition = 0.0;//0.2*0.7*self.view.frame.size.width;
+    float backButtonXPosition = 0.0;
     float backButtonHeight = 0.05*self.frame.size.height;
-    float backButtonYPosition = 0.035*self.frame.size.height;//0.7*self.view.frame.size.height - submitButtonHeight;
+    float backButtonYPosition = 0.035*self.frame.size.height;
     CGRect backButtonFrame = CGRectMake(backButtonXPosition, backButtonYPosition, backButtonWidth, backButtonHeight);
     OPButton* backButton = [[OPButton alloc] initWithFrame:backButtonFrame withTitle:@"Back"];
     [backButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0]];
     [backButton addTarget:self action:@selector(goBackAction) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:backButton];
-    
-    
-    //read dictionary information
-    NSDictionary* testDic = [self readProfileDictionaryData];
-    NSLog(@"testDic: print %@",testDic);
 
     //create the profile picture view
     float profileViewYPos = 0.5*self.frame.size.height - 200.0;
@@ -78,8 +79,28 @@
         @catch (NSException *exception) {
             NSLog(@"Unable to Load any image");
         }
-        
     }
+    
+    float nameFieldWidth = self.frame.size.width;
+    float nameFieldYPos = profileViewYPos + profileView.frame.size.height;
+    float nameFieldXPos = -2.0;
+    float nameFieldHeight = 0.1*self.frame.size.height;
+    
+    //create the first and last name fields
+    CGRect nameFieldFrame = CGRectMake(nameFieldXPos,
+                                       nameFieldYPos,
+                                       nameFieldWidth,
+                                       nameFieldHeight);
+
+    @try {
+        NSString * userProfileName = [NSString stringWithFormat:@"%@ %@",[userProfileInfo objectForKey:@"first_name"],[userProfileInfo objectForKey:@"last_name"]];
+        OPTextField* nameField = [[OPTextField alloc] initForUserProfileWithFrame:nameFieldFrame withTitle:userProfileName isSecure:YES];
+        [self addSubview:nameField];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error, unable to add the userProfile Name information : %@",exception);
+    }
+
 }
 
 -(UIImage*) readProfileImageToFile
