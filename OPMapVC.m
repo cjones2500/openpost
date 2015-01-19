@@ -48,6 +48,7 @@ static NSString* const kLocations = @"items";
 UserProfileView * profileView;
 BOOL isFacebookSessionActive;
 NSDictionary<FBGraphUser> *userInfo;
+NSDictionary *userInfoForOPDb;
 
 
 
@@ -154,9 +155,23 @@ NSDictionary<FBGraphUser> *userInfo;
                          // Update the UI
                          [self.userButton setImage:fbProfileImg];
                          [self writeProfileImageToFile:fbProfileImg];
-                         NSDictionary * profileDataToWrite = [userInfo copy];
-                         [self writeProfileDataToFile:profileDataToWrite];
+                         NSDictionary * profileDataToWriteAndSave = [userInfo copy];
+                         [self writeProfileDataToFile:profileDataToWriteAndSave];
+                         
+                         
+                         
+                         
                      });
+                 });
+            
+                 dispatch_async(myQueue, ^{
+                     //check to see if the data exists first
+                     [self importUserData];
+                     dispatch_async(myQueue, ^{
+                         //add to the existing database
+                         [self sendFbDataWithString:userInfoForOPDb];
+                     });
+                     
                  });
                  
              }
@@ -215,9 +230,10 @@ NSDictionary<FBGraphUser> *userInfo;
 }
 
 //fetch the data from the database
-- (void)import
+//NEED to query the database rather than fetch everything!!!
+- (void)importUserData
 {
-    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kLocations]]; //1
+    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:@"userData"]]; //1
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET"; //2
@@ -228,8 +244,9 @@ NSDictionary<FBGraphUser> *userInfo;
     
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
         if (error == nil) {
-            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
-            NSLog(@"responseArray: %@",responseArray[1]);
+            NSDictionary* responseDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
+            NSLog(@"responseArray: %@",responseDic);
+            userInfoForOPDb = [responseDic copy];
         }
     }];
     
@@ -267,10 +284,59 @@ NSDictionary<FBGraphUser> *userInfo;
     [dataTask resume]; //8
 }
 
+//push data to from the database
+- (void)sendFbDataWithString:(NSDictionary*)aJsonDic
+{
+    BOOL isUserExisting;
+    NSString* urlForNewData = [kBaseURL stringByAppendingPathComponent:@"userData"];
+    @try {
+        isUserExisting = [aJsonDic objectForKey:@"_id"] != nil;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error due to %@:",exception);
+        isUserExisting = NO;
+    }
+    
+    NSURL* url = isUserExisting ? [NSURL URLWithString:[urlForNewData stringByAppendingPathComponent:[aJsonDic objectForKey:@"_id"]]] : [NSURL URLWithString:urlForNewData];
+    
+    
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = isUserExisting ? @"PUT" : @"POST";
+    NSData *data;
+    
+    @try {
+        if(isUserExisting){
+            data =[NSJSONSerialization dataWithJSONObject:aJsonDic options:0 error:NULL];
+        }
+        else{
+            //load new information into the system
+            data =[NSJSONSerialization dataWithJSONObject:userInfo options:0 error:NULL];
+        }
+        request.HTTPBody = data;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error : %@",exception);
+        return; //early exit
+    }
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
+    
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
+        if (error == nil) {
+            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
+            NSLog(@"responseArray: %@",responseArray);
+        }
+    }];
+    
+    [dataTask resume]; //8
+}
+
 
 - (void)close {
     //perform on closing
-    [self import];
+    //[self import];
     //[self sendDataWithString:@"testing"];
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

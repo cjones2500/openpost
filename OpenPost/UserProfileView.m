@@ -66,6 +66,7 @@
     OPInfoView * profileView;
     @try {
         profileView= [[OPInfoView alloc] initWithYCoord:profileViewYPos withSuperView:self withAnImage:profileImage];
+        profileView.contentMode = UIViewContentModeScaleAspectFill;
         profileView.layer.borderWidth = 0.0f;
         [self addSubview:profileView];
     }
