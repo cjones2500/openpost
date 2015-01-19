@@ -47,6 +47,7 @@ static NSString* const kLocations = @"items";
 
 UserProfileView * profileView;
 BOOL isFacebookSessionActive;
+BOOL isUserAlreadyInDatabase;
 NSDictionary<FBGraphUser> *userInfo;
 NSDictionary *userInfoForOPDb;
 
@@ -106,17 +107,6 @@ NSDictionary *userInfoForOPDb;
     
 }
 
--(void) test{
-    NSString *facebookId = userInfo.objectID;
-    NSLog(@"In dispatch facebookId : %@",facebookId);
-    NSString *imageUrlString = [[NSString alloc] initWithFormat: @"http://graph.facebook.com/%@/picture?type=large", facebookId];
-    NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
-    NSData *data = [NSData dataWithContentsOfURL:imageUrl];
-    UIImage *fbProfileImg = [UIImage imageWithData:data];
-    NSLog(@"UIImage outside %@",fbProfileImg);
-    [self.userButton setImage:fbProfileImg];
-}
-
 -(void)viewDidAppear:(BOOL)animated
 {
     [self loadFacebookInformation];
@@ -141,15 +131,12 @@ NSDictionary *userInfoForOPDb;
                  userInfo = user;
                  [profileView setUserProfileInfo:user];
                  
-                 NSLog(@"Loaded information for user.id %@",user.objectID);
                  dispatch_async(myQueue, ^{
                      NSString *facebookId = userInfo.objectID;
-                     NSLog(@"In dispatch facebookId : %@",facebookId);
                      NSString *imageUrlString = [[NSString alloc] initWithFormat: @"http://graph.facebook.com/%@/picture?type=large", facebookId];
                      NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
                      NSData *data = [NSData dataWithContentsOfURL:imageUrl];
                      UIImage *fbProfileImg = [UIImage imageWithData:data];
-                     NSLog(@"UIImage outside %@",fbProfileImg);
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
                          // Update the UI
@@ -157,33 +144,19 @@ NSDictionary *userInfoForOPDb;
                          [self writeProfileImageToFile:fbProfileImg];
                          NSDictionary * profileDataToWriteAndSave = [userInfo copy];
                          [self writeProfileDataToFile:profileDataToWriteAndSave];
-                         
-                         
-                         
-                         
                      });
                  });
             
                  dispatch_async(myQueue, ^{
-                     //check to see if the data exists first
-                     [self importUserData];
-                     dispatch_async(myQueue, ^{
-                         //add to the existing database
+                     [self isUserPresentInOpDb];
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
                          [self sendFbDataWithString:userInfoForOPDb];
                      });
-                     
                  });
-                 
-             }
-             else{
-                 NSLog(@"Error downloading Facebook information: %@",error);
              }
          }];
-        
-            NSLog(@"finished in sync custom queue");
-            
-        });
-    
+        }); //end of the sync on custom queue
     }
 }
 
@@ -229,89 +202,53 @@ NSDictionary *userInfoForOPDb;
     // Dispose of any resources that can be recreated.
 }
 
-//fetch the data from the database
-//NEED to query the database rather than fetch everything!!!
-- (void)importUserData
+-(void)isUserPresentInOpDb
 {
-    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:@"userData"]]; //1
+    __block NSArray* responseArray;
+    //request the information
+    //NSLog(@"userInfo %@",[userInfo objectForKey:@"id"]);
+    NSString* queryString = [NSString stringWithFormat:@"?id=%@",[userInfo objectForKey:@"id"]];
+    NSString* urlStr = [[kBaseURL stringByAppendingPathComponent:@"userData"] stringByAppendingString:queryString];
+    NSURL* url = [NSURL URLWithString:urlStr];
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET"; //2
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"]; //3
-    
-    NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration]; //4
-    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
-    
-    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
-        if (error == nil) {
-            NSDictionary* responseDic = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
-            NSLog(@"responseArray: %@",responseDic);
-            userInfoForOPDb = [responseDic copy];
-        }
-    }];
-    
-    [dataTask resume]; //8
-}
-
-//push data to from the database
-- (void)sendDataWithString:(NSString*)aStringToSend
-{
-    NSURL* url = [NSURL URLWithString:[kBaseURL stringByAppendingPathComponent:kLocations]]; //1
-    
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"POST";
-    
-    /*NSData* data = [NSJSONSerialization dataWithJSONObject:[location toDictionary] options:0 error:NULL]; //3
-    request.HTTPBody = data;*/
-    
-    NSMutableDictionary* jsonable = [NSMutableDictionary dictionary];
-    safeSet(jsonable, @"title", aStringToSend);
-    NSData * data =[NSJSONSerialization dataWithJSONObject:jsonable options:0 error:NULL];
-    request.HTTPBody = data;
-    
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
     
-    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
+    NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (error == nil) {
-            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
-            NSLog(@"responseArray: %@",responseArray);
+            responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
+            NSLog(@"received %d items", responseArray.count);
+            
+            if(responseArray.count > 0){
+                isUserAlreadyInDatabase = YES;
+            }
+            else{
+                isUserAlreadyInDatabase = NO;
+            }
         }
     }];
-    
-    [dataTask resume]; //8
+    [dataTask resume];
 }
 
 //push data to from the database
 - (void)sendFbDataWithString:(NSDictionary*)aJsonDic
 {
-    BOOL isUserExisting;
     NSString* urlForNewData = [kBaseURL stringByAppendingPathComponent:@"userData"];
-    @try {
-        isUserExisting = [aJsonDic objectForKey:@"_id"] != nil;
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Error due to %@:",exception);
-        isUserExisting = NO;
-    }
     
-    NSURL* url = isUserExisting ? [NSURL URLWithString:[urlForNewData stringByAppendingPathComponent:[aJsonDic objectForKey:@"_id"]]] : [NSURL URLWithString:urlForNewData];
+    //NSLog(@"isUser db %d",isUserAlreadyInDatabase);
+    NSURL* url = isUserAlreadyInDatabase ? [NSURL URLWithString:[urlForNewData stringByAppendingPathComponent:[aJsonDic objectForKey:@"_id"]]] : [NSURL URLWithString:urlForNewData];
     
-    
+    //NSLog(@"url %@",url);
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = isUserExisting ? @"PUT" : @"POST";
+    request.HTTPMethod = isUserAlreadyInDatabase ? @"PUT" : @"POST";
+    //NSLog(@"request to move %@",request.HTTPMethod);
     NSData *data;
-    
     @try {
-        if(isUserExisting){
-            data =[NSJSONSerialization dataWithJSONObject:aJsonDic options:0 error:NULL];
-        }
-        else{
-            //load new information into the system
-            data =[NSJSONSerialization dataWithJSONObject:userInfo options:0 error:NULL];
-        }
+        data =[NSJSONSerialization dataWithJSONObject:userInfo options:0 error:NULL];
         request.HTTPBody = data;
     }
     @catch (NSException *exception) {
@@ -325,8 +262,7 @@ NSDictionary *userInfoForOPDb;
     
     NSURLSessionDataTask* dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) { //5
         if (error == nil) {
-            NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
-            NSLog(@"responseArray: %@",responseArray);
+            //NSArray* responseArray = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL]; //6
         }
     }];
     
@@ -335,10 +271,6 @@ NSDictionary *userInfoForOPDb;
 
 
 - (void)close {
-    //perform on closing
-    //[self import];
-    //[self sendDataWithString:@"testing"];
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
     @try {
