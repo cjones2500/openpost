@@ -15,6 +15,7 @@
 		F933D13B1A6ABEE800DA3D52 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F933D13A1A6ABEE800DA3D52 /* MapKit.framework */; };
 		F933D1411A6AC39D00DA3D52 /* user_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F933D1401A6AC39D00DA3D52 /* user_icon.png */; };
 		F933D1471A6ACA3B00DA3D52 /* UserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1461A6ACA3B00DA3D52 /* UserProfileView.m */; };
+		F933D14F1A8183DA00DA3D52 /* OPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D14E1A8183DA00DA3D52 /* OPServer.m */; };
 		F934E5FA1A646C2C006EBA6D /* op.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F81A646C2C006EBA6D /* op.png */; };
 		F934E5FB1A646C2C006EBA6D /* openPost.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F91A646C2C006EBA6D /* openPost.png */; };
 		F934E5FE1A6472A3006EBA6D /* OPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F934E5FD1A6472A3006EBA6D /* OPTextField.m */; };
@@ -65,6 +66,8 @@
 		F933D1401A6AC39D00DA3D52 /* user_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user_icon.png; sourceTree = SOURCE_ROOT; };
 		F933D1451A6ACA3B00DA3D52 /* UserProfileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfileView.h; sourceTree = "<group>"; };
 		F933D1461A6ACA3B00DA3D52 /* UserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileView.m; sourceTree = "<group>"; };
+		F933D14D1A8183DA00DA3D52 /* OPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPServer.h; sourceTree = "<group>"; };
+		F933D14E1A8183DA00DA3D52 /* OPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPServer.m; sourceTree = "<group>"; };
 		F934E5F81A646C2C006EBA6D /* op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = op.png; sourceTree = SOURCE_ROOT; };
 		F934E5F91A646C2C006EBA6D /* openPost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openPost.png; sourceTree = SOURCE_ROOT; };
 		F934E5FC1A6472A3006EBA6D /* OPTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTextField.h; sourceTree = "<group>"; };
@@ -202,6 +205,8 @@
 				F9806F321A5EB255009FEE60 /* OPLogo.m */,
 				F934E5FC1A6472A3006EBA6D /* OPTextField.h */,
 				F934E5FD1A6472A3006EBA6D /* OPTextField.m */,
+				F933D14D1A8183DA00DA3D52 /* OPServer.h */,
+				F933D14E1A8183DA00DA3D52 /* OPServer.m */,
 			);
 			name = OPClasses;
 			sourceTree = "<group>";
@@ -436,6 +441,7 @@
 				F971709E1A55EC6B0023AED9 /* OpenPost.xcdatamodeld in Sources */,
 				F933D1351A688B6400DA3D52 /* Location.m in Sources */,
 				F95EADD01A5CB2F800A2F1C8 /* CustomScrollView.m in Sources */,
+				F933D14F1A8183DA00DA3D52 /* OPServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

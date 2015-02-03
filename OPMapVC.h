@@ -10,9 +10,11 @@
 #import <MapKit/MapKit.h>
 #import <FacebookSDK.h> 
 #import "OPInfoView.h"
+#import "OPServer.h"
 
 @interface OPMapVC : UIViewController <MKMapViewDelegate,FBLoginViewDelegate>
 
 @property (nonatomic, retain) OPInfoView * userButton;
+@property (nonatomic,retain) OPServer * serverConnection;
 
 @end

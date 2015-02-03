@@ -13,12 +13,10 @@
 #import "UserProfileView.h"
 #import <QuartzCore/QuartzCore.h>
 
-
 #define safeSet(d,k,v) if (v) d[k] = v;
 
-static NSString* const kBaseURL = @"http://localhost:5000/";
-static NSString* const kLocations = @"items";
-//static NSString* const kFiles = @"files";
+static NSString* const kBaseURL = @"https://openpost.herokuapp.com/";
+//static NSString* const kBaseURL = @"htp://localhost:5000/";
 
 /*NOTE:
     THIS SERVER currently is hosted locally and requires and active mongodb instance.
@@ -125,35 +123,54 @@ NSDictionary *userInfoForOPDb;
          ^(FBRequestConnection *connection,
            NSDictionary<FBGraphUser> *user,
            NSError *error) {
+             
+             //if there is no error loading from Facebook
              if (!error) {
                  
                  //Load the user information from Facebook
                  userInfo = user;
                  [profileView setUserProfileInfo:user];
                  
+                 //dispatch asynchronous on a particular dispatch queue
                  dispatch_async(myQueue, ^{
+                     
                      NSString *facebookId = userInfo.objectID;
                      NSString *imageUrlString = [[NSString alloc] initWithFormat: @"http://graph.facebook.com/%@/picture?type=large", facebookId];
                      NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
                      NSData *data = [NSData dataWithContentsOfURL:imageUrl];
                      UIImage *fbProfileImg = [UIImage imageWithData:data];
                      
+                     //dispatch asynchronously on the main queue
                      dispatch_async(dispatch_get_main_queue(), ^{
+                         
                          // Update the UI
                          [self.userButton setImage:fbProfileImg];
+                         
+                         //save the profile Image to file such that in can be downloaded later
                          [self writeProfileImageToFile:fbProfileImg];
+                         
+                         //save profile data to the phone
                          NSDictionary * profileDataToWriteAndSave = [userInfo copy];
                          [self writeProfileDataToFile:profileDataToWriteAndSave];
                      });
                  });
+                 
+                 //this appears to work but I'm not sure what the difference is here
+                 checkServerAndProceed(^{[self isUserPresentInOpDb]; },
+                                       ^{[self sendFbDataWithString:userInfoForOPDb]; });
+                 
+                 //[self.serverConnection:uploadToServer(^{[self isUserPresentInOpDb];}, ^{[self sendFbDataWithString:userInfoForOPDb];})];
             
-                 dispatch_async(myQueue, ^{
+                 /*dispatch_async(myQueue, ^{
+                     //check to see if the user is present in the Database
                      [self isUserPresentInOpDb];
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
+                         
+                         //if the user isn't present then send the Facebook information with a string
                          [self sendFbDataWithString:userInfoForOPDb];
                      });
-                 });
+                 });*/
              }
          }];
         }); //end of the sync on custom queue
@@ -205,11 +222,12 @@ NSDictionary *userInfoForOPDb;
 -(void)isUserPresentInOpDb
 {
     __block NSArray* responseArray;
+    
     //request the information
-    //NSLog(@"userInfo %@",[userInfo objectForKey:@"id"]);
     NSString* queryString = [NSString stringWithFormat:@"?id=%@",[userInfo objectForKey:@"id"]];
     NSString* urlStr = [[kBaseURL stringByAppendingPathComponent:@"userData"] stringByAppendingString:queryString];
     NSURL* url = [NSURL URLWithString:urlStr];
+    NSLog(@" url to use : %@",url);
     
     NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"GET"; //2
@@ -230,8 +248,12 @@ NSDictionary *userInfoForOPDb;
                 isUserAlreadyInDatabase = NO;
             }
         }
+        else{
+            NSLog(@"Error checking db %@",error);
+        }
     }];
     [dataTask resume];
+    
 }
 
 //push data to from the database
