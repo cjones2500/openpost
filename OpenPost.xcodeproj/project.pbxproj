@@ -16,6 +16,8 @@
 		F933D1411A6AC39D00DA3D52 /* user_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F933D1401A6AC39D00DA3D52 /* user_icon.png */; };
 		F933D1471A6ACA3B00DA3D52 /* UserProfileView.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1461A6ACA3B00DA3D52 /* UserProfileView.m */; };
 		F933D14F1A8183DA00DA3D52 /* OPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D14E1A8183DA00DA3D52 /* OPServer.m */; };
+		F933D1521A89607800DA3D52 /* EventList.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1511A89607800DA3D52 /* EventList.m */; };
+		F933D1551A8967A300DA3D52 /* EventBox.m in Sources */ = {isa = PBXBuildFile; fileRef = F933D1541A8967A300DA3D52 /* EventBox.m */; };
 		F934E5FA1A646C2C006EBA6D /* op.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F81A646C2C006EBA6D /* op.png */; };
 		F934E5FB1A646C2C006EBA6D /* openPost.png in Resources */ = {isa = PBXBuildFile; fileRef = F934E5F91A646C2C006EBA6D /* openPost.png */; };
 		F934E5FE1A6472A3006EBA6D /* OPTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = F934E5FD1A6472A3006EBA6D /* OPTextField.m */; };
@@ -68,6 +70,10 @@
 		F933D1461A6ACA3B00DA3D52 /* UserProfileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfileView.m; sourceTree = "<group>"; };
 		F933D14D1A8183DA00DA3D52 /* OPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPServer.h; sourceTree = "<group>"; };
 		F933D14E1A8183DA00DA3D52 /* OPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OPServer.m; sourceTree = "<group>"; };
+		F933D1501A89607800DA3D52 /* EventList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventList.h; sourceTree = "<group>"; };
+		F933D1511A89607800DA3D52 /* EventList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventList.m; sourceTree = "<group>"; };
+		F933D1531A8967A300DA3D52 /* EventBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventBox.h; sourceTree = "<group>"; };
+		F933D1541A8967A300DA3D52 /* EventBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventBox.m; sourceTree = "<group>"; };
 		F934E5F81A646C2C006EBA6D /* op.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = op.png; sourceTree = SOURCE_ROOT; };
 		F934E5F91A646C2C006EBA6D /* openPost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = openPost.png; sourceTree = SOURCE_ROOT; };
 		F934E5FC1A6472A3006EBA6D /* OPTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OPTextField.h; sourceTree = "<group>"; };
@@ -155,6 +161,8 @@
 				F934E6001A647D60006EBA6D /* OPMapVC.m */,
 				F933D1451A6ACA3B00DA3D52 /* UserProfileView.h */,
 				F933D1461A6ACA3B00DA3D52 /* UserProfileView.m */,
+				F933D1501A89607800DA3D52 /* EventList.h */,
+				F933D1511A89607800DA3D52 /* EventList.m */,
 				F933D1391A68909200DA3D52 /* Reference */,
 			);
 			name = MapVC;
@@ -207,6 +215,8 @@
 				F934E5FD1A6472A3006EBA6D /* OPTextField.m */,
 				F933D14D1A8183DA00DA3D52 /* OPServer.h */,
 				F933D14E1A8183DA00DA3D52 /* OPServer.m */,
+				F933D1531A8967A300DA3D52 /* EventBox.h */,
+				F933D1541A8967A300DA3D52 /* EventBox.m */,
 			);
 			name = OPClasses;
 			sourceTree = "<group>";
@@ -429,6 +439,8 @@
 				F933D1471A6ACA3B00DA3D52 /* UserProfileView.m in Sources */,
 				F971709B1A55EC6B0023AED9 /* AppDelegate.m in Sources */,
 				F9C0607D1A5D8F5A00688883 /* OPButton.m in Sources */,
+				F933D1521A89607800DA3D52 /* EventList.m in Sources */,
+				F933D1551A8967A300DA3D52 /* EventBox.m in Sources */,
 				F933D1381A688C1B00DA3D52 /* Locations.m in Sources */,
 				F97170C01A5608190023AED9 /* OPTransition.m in Sources */,
 				F97170981A55EC6B0023AED9 /* main.m in Sources */,

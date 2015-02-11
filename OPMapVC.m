@@ -12,6 +12,7 @@
 #import "OPInfoView.h"
 #import "UserProfileView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "EventList.h"
 
 #define safeSet(d,k,v) if (v) d[k] = v;
 
@@ -48,6 +49,8 @@ BOOL isFacebookSessionActive;
 BOOL isUserAlreadyInDatabase;
 NSDictionary<FBGraphUser> *userInfo;
 NSDictionary *userInfoForOPDb;
+UIImage *fbProfileImg;
+EventList *eventList;
 
 
 
@@ -126,51 +129,30 @@ NSDictionary *userInfoForOPDb;
              
              //if there is no error loading from Facebook
              if (!error) {
-                 
-                 //Load the user information from Facebook
                  userInfo = user;
                  [profileView setUserProfileInfo:user];
                  
-                 //dispatch asynchronous on a particular dispatch queue
-                 dispatch_async(myQueue, ^{
-                     
+                 checkServerAndProceed(^{
                      NSString *facebookId = userInfo.objectID;
                      NSString *imageUrlString = [[NSString alloc] initWithFormat: @"http://graph.facebook.com/%@/picture?type=large", facebookId];
                      NSURL *imageUrl = [NSURL URLWithString:imageUrlString];
                      NSData *data = [NSData dataWithContentsOfURL:imageUrl];
-                     UIImage *fbProfileImg = [UIImage imageWithData:data];
+                     fbProfileImg = [UIImage imageWithData:data];
+                 
+                 },^{
+                     // Update the UI
+                     [self.userButton setImage:fbProfileImg];
                      
-                     //dispatch asynchronously on the main queue
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         
-                         // Update the UI
-                         [self.userButton setImage:fbProfileImg];
-                         
-                         //save the profile Image to file such that in can be downloaded later
-                         [self writeProfileImageToFile:fbProfileImg];
-                         
-                         //save profile data to the phone
-                         NSDictionary * profileDataToWriteAndSave = [userInfo copy];
-                         [self writeProfileDataToFile:profileDataToWriteAndSave];
-                     });
+                     //save the profile Image to file such that in can be downloaded later
+                     [self writeProfileImageToFile:fbProfileImg];
+                     
+                     //save profile data to the phone
+                     NSDictionary * profileDataToWriteAndSave = [userInfo copy];
+                     [self writeProfileDataToFile:profileDataToWriteAndSave];
                  });
                  
-                 //this appears to work but I'm not sure what the difference is here
                  checkServerAndProceed(^{[self isUserPresentInOpDb]; },
                                        ^{[self sendFbDataWithString:userInfoForOPDb]; });
-                 
-                 //[self.serverConnection:uploadToServer(^{[self isUserPresentInOpDb];}, ^{[self sendFbDataWithString:userInfoForOPDb];})];
-            
-                 /*dispatch_async(myQueue, ^{
-                     //check to see if the user is present in the Database
-                     [self isUserPresentInOpDb];
-                     
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         
-                         //if the user isn't present then send the Facebook information with a string
-                         [self sendFbDataWithString:userInfoForOPDb];
-                     });
-                 });*/
              }
          }];
         }); //end of the sync on custom queue
@@ -195,24 +177,30 @@ NSDictionary *userInfoForOPDb;
 }
 
 
+//Move into the profile view
 -(void) openProfile{
-    NSLog(@"in here");
-    //add the profile View
-    profileView = [[UserProfileView alloc] initWithFrame:self.view.frame];
-    profileView.alpha = 0.0; //make the view transparent
-    [self.view addSubview:profileView];
-    [self.view bringSubviewToFront:profileView];
+    eventList = [[EventList alloc] initWithFrame:self.view.frame];
+    [self transitionToGenericView:eventList];
+    
+    /*profileView = [[UserProfileView alloc] initWithFrame:self.view.frame];
+    [self transitionToGenericView:profileView];*/
+}
+
+- (void)transitionToGenericView:(UIView*)aGenericView{
+    aGenericView.alpha = 0.0; //make the view transparent
+    [self.view addSubview:aGenericView];
+    [self.view bringSubviewToFront:aGenericView];
     [UIView animateWithDuration:0.3
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseIn
                      animations:^{
-                         profileView.alpha = 1.0;
+                         aGenericView.alpha = 1.0;
                      }
                      completion:^(BOOL finished){
                          //do nothing
-    }];
-    
+                     }];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
