@@ -7,6 +7,7 @@
 //
 
 //TODO: Order each event by time
+//TODO: Add a list view and a map view
 
 #import "EventList.h"
 #import "EventBox.h"
@@ -47,9 +48,21 @@ NSMutableArray * arrayOfEventBoxes;
                                     bannerWidth,
                                     bannerHeight);
     
-    OPButton* banner = [[OPButton alloc] initWithFrame:bannerFrame withTitle:@"Events"];
+    OPButton* banner = [[OPButton alloc] initWithFrame:bannerFrame withTitle:@"List View"];
     banner.layer.cornerRadius = 0.0;
     [self.customScrollView addSubview:banner];
+    
+    //build the go back button
+    float backButtonWidth = 0.2*self.frame.size.width;
+    float backButtonXPosition = 0.0;
+    float backButtonHeight = 0.05*self.frame.size.height;
+    float backButtonYPosition = 0.035*self.frame.size.height;
+    CGRect backButtonFrame = CGRectMake(backButtonXPosition, backButtonYPosition, backButtonWidth, backButtonHeight);
+    
+    OPButton* backButton = [[OPButton alloc] initWithFrame:backButtonFrame withTitle:@"Back"];
+    [backButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0]];
+    [backButton addTarget:self action:@selector(goBackAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.customScrollView addSubview:backButton];
     
     //Spawn many event banner for as many spaces are there are within the view
     int numberOfEventBanners = 40;
@@ -81,6 +94,18 @@ NSMutableArray * arrayOfEventBoxes;
         [eventBox initialiseFlipping];
     }
     [self addSubview:self.customScrollView];
+}
+
+-(void) goBackAction{
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationOptionCurveLinear
+                     animations:^{
+                         self.alpha = 0.0;
+                     }
+                     completion:^(BOOL finished){
+                         //do nothing
+                     }];
 }
 
 @end

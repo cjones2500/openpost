@@ -11,10 +11,12 @@
 #import <FacebookSDK.h> 
 #import "OPInfoView.h"
 #import "OPServer.h"
+#import "EventList.h"
 
 @interface OPMapVC : UIViewController <MKMapViewDelegate,FBLoginViewDelegate>
 
 @property (nonatomic, retain) OPInfoView * userButton;
 @property (nonatomic,retain) OPServer * serverConnection;
+@property (nonatomic,retain) EventList *eventList;
 
 @end

@@ -12,7 +12,7 @@
 #import "OPInfoView.h"
 #import "UserProfileView.h"
 #import <QuartzCore/QuartzCore.h>
-#import "EventList.h"
+
 
 #define safeSet(d,k,v) if (v) d[k] = v;
 
@@ -50,13 +50,13 @@ BOOL isUserAlreadyInDatabase;
 NSDictionary<FBGraphUser> *userInfo;
 NSDictionary *userInfoForOPDb;
 UIImage *fbProfileImg;
-EventList *eventList;
-
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.eventList = [[EventList alloc] initWithFrame:self.view.frame];
     
     //add the MapView to the controller
     MKMapView * theMapView = [[MKMapView alloc] initWithFrame:self.view.frame];
@@ -74,7 +74,7 @@ EventList *eventList;
                                     bannerWidth,
                                     bannerHeight);
     
-    OPButton* banner = [[OPButton alloc] initWithFrame:bannerFrame withTitle:@"Profile"];
+    OPButton* banner = [[OPButton alloc] initWithFrame:bannerFrame withTitle:@"Map View"];
     banner.layer.cornerRadius = 0.0;
     [self.view addSubview:banner];
     
@@ -96,14 +96,14 @@ EventList *eventList;
     [self.view addSubview:self.userButton];
     
     //build the logout button
-    float logOutButtonWidth = 0.2*self.view.frame.size.width;
+    float logOutButtonWidth = 0.3*self.view.frame.size.width;
     float logOutButtonXPosition = self.view.frame.size.width - logOutButtonWidth;
     float logOutButtonHeight = 0.05*self.view.frame.size.height;
     float logOutButtonYPosition = 0.035*self.view.frame.size.height;//0.7*self.view.frame.size.height - submitButtonHeight;
     CGRect logOutButtonFrame = CGRectMake(logOutButtonXPosition, logOutButtonYPosition, logOutButtonWidth, logOutButtonHeight);
-    OPButton* logOutButton = [[OPButton alloc] initWithFrame:logOutButtonFrame withTitle:@"Log Out"];
+    OPButton* logOutButton = [[OPButton alloc] initWithFrame:logOutButtonFrame withTitle:@"List View"];
     [logOutButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17.0]];
-    [logOutButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+    [logOutButton addTarget:self action:@selector(openListView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:logOutButton];
     
 }
@@ -179,11 +179,12 @@ EventList *eventList;
 
 //Move into the profile view
 -(void) openProfile{
-    eventList = [[EventList alloc] initWithFrame:self.view.frame];
-    [self transitionToGenericView:eventList];
-    
-    /*profileView = [[UserProfileView alloc] initWithFrame:self.view.frame];
-    [self transitionToGenericView:profileView];*/
+    profileView = [[UserProfileView alloc] initWithFrame:self.view.frame];
+    [self transitionToGenericView:profileView];
+}
+
+-(void) openListView{
+    [self transitionToGenericView:self.eventList];
 }
 
 - (void)transitionToGenericView:(UIView*)aGenericView{
